@@ -60,7 +60,7 @@ void setup()
   sceneManager.addScene(scene03);
   sceneManager.addScene(scene04);
   sceneManager.addScene(scene05);
-  //second comment for an error
+  //wow this is a comment
   //this is a random comment to check for changes
 }
 
