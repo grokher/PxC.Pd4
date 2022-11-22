@@ -45,15 +45,15 @@ void setup()
   TextObject endGame = new TextObject("smallText_scene04", 430, 590, 50, 50, "medal1.png", "Congratulations. You finished the game!");
   scene04.addGameObject(endGame);
   
-  Scene scene05 = new Scene("scene05", "back05.png");
+  Scene scene05 = new Scene("scene05", "Player.png");
   MoveToSceneObject object8 = new MoveToSceneObject("goBack_scene01", 203, 753, 50, 50, "arrowDown.png", true);
   scene05.addGameObject(object8);
-  TextObject loupe04 = new TextObject("smallText_scene05", 120, 275, 50, 50, "zoom.png", "Have you checked the apples in that odd house to the right?");
+  /*TextObject loupe04 = new TextObject("smallText_scene05", 120, 275, 50, 50, "zoom.png", "Have you checked the apples in that odd house to the right?");
   loupe04.setHoverImage("zoomIn.png");
   scene05.addGameObject(loupe04);
   TextObject loupe05 = new TextObject("smallText_2_scene05", 480, 285, 50, 50, "zoom.png", "Hello! How are you doing?");
   loupe05.setHoverImage("zoomIn.png");
-  scene05.addGameObject(loupe05);
+  scene05.addGameObject(loupe05);*/
   
   sceneManager.addScene(scene01);
   sceneManager.addScene(scene02);
