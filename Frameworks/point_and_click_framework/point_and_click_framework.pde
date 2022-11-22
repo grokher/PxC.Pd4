@@ -1,5 +1,5 @@
 int wwidth = 800;
-int wheight = 800;
+int wheight = 600;
 
 final SceneManager sceneManager = new SceneManager();
 final InventoryManager inventoryManager = new InventoryManager();
@@ -14,22 +14,29 @@ void setup()
   Collectable apple = new Collectable("apple", "back04_apple.png");
   MoveToSceneObject object7 = new MoveToSceneObject("goToScene04_scene01", 206, 461, 50, 50, "arrowUp.png", "scene04");
   
-  Scene scene01 = new Scene("scene01", "back01.png");
-  //RequireObject loupe01 = new RequireObject("requiresApple_scene01", 206, 461, 50, 50, "zoom.png", "You need an Apple before getting here!", apple, object7);
-  //loupe01.setHoverImage("zoomIn.png");
-//scene01.addGameObject(loupe01);
+  Scene scene01 = new Scene("scene01", "InProgressMap.png");
+  RequireObject loupe01 = new RequireObject("requiresApple_scene01", 206, 461, 50, 50, "zoom.png", "You need an Apple before getting here!", apple, object7);
+  loupe01.setHoverImage("zoomIn.png");
+  scene01.addGameObject(loupe01);
+
   TextObject loupe02 = new TextObject("smallText_scene01", 541, 445, 50, 50, "zoom.png", "This object has a text!");
   loupe02.setHoverImage("zoomIn.png");
   scene01.addGameObject(loupe02);
   TextObject loupe03 = new TextObject("largeText_scene01", 46, 687, 50, 50, "zoom.png", "This object has a way longer text. It shows that the windows can be of varied size according to the text.");
   loupe03.setHoverImage("zoomIn.png");
   scene01.addGameObject(loupe03);
-  MoveToSceneObject object2 = new MoveToSceneObject("goToScene02_scene01", 708, 445, 50, 50, "arrowRight.png", "scene02");
+  
+  
+  
+  MoveToSceneObject object2 = new MoveToSceneObject("goToScene02_scene01", 0, 0, 400, 300, "clickableObject.png", "scene02");
   scene01.addGameObject(object2);
-  MoveToSceneObject restaurantSceneMoveTo = new MoveToSceneObject("goToScene06_scene01", 388, 440, 50, 50, "arrowUp.png", "scene05");
+  MoveToSceneObject restaurantSceneMoveTo = new MoveToSceneObject("goToScene06_scene01", 300, 0, 500, 300, "clickableObject.png", "scene05");
   scene01.addGameObject(restaurantSceneMoveTo);
   
-  Scene scene02 = new Scene("scene02", "back02.png");
+  MoveToSceneObject object9 = new MoveToSceneObject("goToScene03_scene01", 150,150,400,300, "clickableObject.png", "scene03");
+  scene01.addGameObject(object9);
+  
+  Scene scene02 = new Scene("scene02", "Mountains.png");
   MoveToSceneObject object3 = new MoveToSceneObject("goBack_scene02", 350, 700, 50, 50, "arrowDown.png", true);
   scene02.addGameObject(object3);
   MoveToSceneObject object4 = new MoveToSceneObject("goToScene03_scene02", 441, 494, 50, 50, "arrowUp.png", "scene03");
