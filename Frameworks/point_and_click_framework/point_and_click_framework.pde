@@ -1,8 +1,11 @@
+import processing.sound.*;
+
 int wwidth = 800;
 int wheight = 600;
 
 final SceneManager sceneManager = new SceneManager();
 final InventoryManager inventoryManager = new InventoryManager();
+SoundFile button1,button2;
 
 void settings()
 {
@@ -13,6 +16,9 @@ void setup()
 {
   //start of mainMenu is still empty for now
   
+  
+  button1 = new SoundFile(this, "button1.wav");
+  button2 = new SoundFile(this, "button2.wav");
   
   
   //start of scene1 Main game screen
@@ -43,14 +49,14 @@ void setup()
   MoveToSceneObject returnObject1 = new MoveToSceneObject("goBack_scene02", 350, 500, 100, 100, "arrowDownDark.png", true);
   scene02.addGameObject(returnObject1);
   
-  //start of scene03 game screen (Kitsune)
+  //start of scene03 game screen (Kitsune)  
   Scene scene03 = new Scene("scene03", "backKitsune.jpg");
   MoveToSceneObject returnObject2 = new MoveToSceneObject("goBack_scene03", 350, 500, 100, 100, "arrowDownDark.png", true);
   scene03.addGameObject(returnObject2);
   
-  /**CollectableObject object6 = new CollectableObject("apple_scene03", 325, 366, 123, 101, apple);
-  scene03.addGameObject(object6);*/
   
+  /**CollectableObject object6 = new CollectableObject("apple_scene03", 325, 366, 123, 101, apple);
+  scene03.addGameObject(object6);*/ 
   //start of scene04 game screen (Jorogumo)
   Scene scene04 = new Scene("scene04", "backJorogumo.png");
   MoveToSceneObject returnObject3 = new MoveToSceneObject("goBack_scene04",350,500,100,100,"arrowDownDark.png", true);
