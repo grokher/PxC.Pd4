@@ -1,7 +1,7 @@
 class Combat_System{
 int playerHealth = 100;
 int enemyHealth = 200;
-int enemyDamage = 10;
+int enemyDamage = 15;
 int weaponDamage = 5;
 int potionAmmount = 3;
 int attackInterval = 1;
@@ -27,7 +27,13 @@ void draw (){
   textSize (32);
   text (playerHealth,403,56);
   
+  text (potionAmmount, 91, 466);
+  
    time = millis()/2000;
+   
+    if (playerHealth > 100){
+    playerHealth = 100;
+  }
   
   if (fighting == true){
   if(time - attackInterval == 1)
