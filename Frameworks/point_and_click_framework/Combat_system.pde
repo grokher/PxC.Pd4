@@ -29,32 +29,35 @@ void draw (){
   
   text (potionAmmount, 91, 466);
   
-   time = millis()/2000;
+   time = millis()/1500;
    
     if (playerHealth > 100){
     playerHealth = 100;
   }
    
-    if (playerHealth > 100){
-    playerHealth = 100;
+   if (playerHealth < 1){
+    playerHealth = 0;
   }
   
   if (fighting == true){
-  if(time - attackInterval == 1)
+  if(time - attackInterval == 1 && enemyHealth > 0)
   {
     playerHealth -= enemyDamage;
+    attackInterval++;
+  }
+  else if (keyPressed == true){
     attackInterval++;
   }
 }
 }
 
 void mouseClicked (){
-  if (mouseX > 200 & mouseX < 300 & mouseY > 447 & mouseY < 482){
+  if (mouseX > 200 & mouseX < 300 & mouseY > 447 & mouseY < 482 & playerHealth > 0){
   enemyHealth -= weaponDamage;
   }
-  if (mouseX > 50 & mouseX < 150 & mouseY > 447 & mouseY < 482 & potionAmmount > 0){
+  if (mouseX > 50 & mouseX < 150 & mouseY > 447 & mouseY < 482 & potionAmmount > 0 & playerHealth > 0){
     playerHealth += healthPotion;
-    potionAmmount -= 1;
+    potionAmmount -= 1; 
 }
 }
 }
