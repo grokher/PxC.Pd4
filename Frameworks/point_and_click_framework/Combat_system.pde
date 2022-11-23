@@ -34,6 +34,10 @@ void draw (){
     if (playerHealth > 100){
     playerHealth = 100;
   }
+   
+    if (playerHealth > 100){
+    playerHealth = 100;
+  }
   
   if (fighting == true){
   if(time - attackInterval == 1)
