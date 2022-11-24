@@ -15,13 +15,12 @@ void settings()
 void setup()
 {
   //start of mainMenu is still empty for now
-<<<<<<< Updated upstream
   
   
   button1 = new SoundFile(this, "button1.wav");
   button2 = new SoundFile(this, "button2.wav");
-  
-=======
+
+  //start of mainMenu is still empty for now
   Scene mainMenu = new Scene("sceneMainMenu", "player.jpg");
   GameObject weaponKatana = new GameObject("weapon_scene0x", 300,200,300,500, "tempKatana.png");
   TextObject startButton = new TextObject("startText_mainMenu",450,100,50,50,"","Start Game");
@@ -33,7 +32,7 @@ void setup()
   mainMenu.addGameObject(quitButton);
   MoveToSceneObject quitGame = new MoveToSceneObject("goToScene01_sceneMainMenu",450,250,75,75,"clickableObject.png","scene01");
   mainMenu.addGameObject(quitGame);*/
->>>>>>> Stashed changes
+
   
   //start of scene1 Main game screen
   Scene scene01 = new Scene("scene01", "InProgressMap.png");
@@ -68,13 +67,11 @@ void setup()
   Scene scene03 = new Scene("scene03", "backKitsune.jpg");
   MoveToSceneObject returnObject2 = new MoveToSceneObject("goBack_scene03", 350, 500, 100, 100, "arrowDownDark.png", true);
   scene03.addGameObject(returnObject2);
-<<<<<<< Updated upstream
-  
-=======
+
   scene03.addGameObject(weaponKatana);
   /**CollectableObject object6 = new CollectableObject("apple_scene03", 325, 366, 123, 101, apple);
   scene03.addGameObject(object6);*/
->>>>>>> Stashed changes
+
   
   /**CollectableObject object6 = new CollectableObject("apple_scene03", 325, 366, 123, 101, apple);
   scene03.addGameObject(object6);*/ 
