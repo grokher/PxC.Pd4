@@ -9,12 +9,14 @@ class Combat_System extends GameObject { //<>//
   int localTime;
   boolean fighting = false;
   int healthPotion = 20;
+  PImage gameObjectImage;
 
   void draw () {
     if (fighting == false){
       playerHealth = 120;
     }
 
+    if(fighting == true){
       //health potion button
       rectMode (CENTER);
       fill (#16DB4C);
@@ -29,14 +31,17 @@ class Combat_System extends GameObject { //<>//
       text ("player " + playerHealth, 621, 56);
 
       text (potionAmmount, 103, 561);
-
-
+    }
+    
       if (enemyHealth < 1) {
         fighting = false;
       }
+      if (enemyHealth < 1) {
+        enemyHealth = 0;
+      }
 
       if (playerHealth > 120) {
-        playerHealth = 100;
+        playerHealth = 120;
       }
 
       if (playerHealth < 1) {
@@ -51,7 +56,7 @@ class Combat_System extends GameObject { //<>//
         playerHealth -= enemyDamage;
         attackInterval++;
       }
-    
+
   }
 
   void mouseClicked () {
@@ -73,5 +78,6 @@ class Combat_System extends GameObject { //<>//
   public Combat_System(String identifier, int x, int y, int owidth, int oheight, String gameObjectImageFile)
   {
     super(identifier, x, y, owidth, oheight, gameObjectImageFile);
+    this.gameObjectImage = loadImage(gameObjectImageFile);
   }
 }
