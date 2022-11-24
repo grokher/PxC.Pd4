@@ -8,7 +8,7 @@ class TextObject extends GameObject {
                     int oheight, String gameObjectImageFile, String text) {
     super(identifier, x, y, owidth, oheight, gameObjectImageFile);
     this.text = text;
-    displayText = false;
+    displayText = true;
     calculateTextArea(); //Automatically calculates the area 
                          //necessary to display the entire text.
   }
