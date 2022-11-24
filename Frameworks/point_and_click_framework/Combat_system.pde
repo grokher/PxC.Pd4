@@ -1,4 +1,4 @@
-class Combat_System{
+class Combat_System extends GameObject{
 int playerHealth = 100;
 int enemyHealth = 200;
 int enemyDamage = 15;
@@ -15,7 +15,7 @@ void draw (){
   fill (#8B1C1C);
   rect (250, 454.5, 100, 35);
   
-  //health potion
+  //health potion button
   fill (#16DB4C);
   rect (100, 454.5, 100, 35);
   
@@ -45,19 +45,25 @@ void draw (){
     playerHealth -= enemyDamage;
     attackInterval++;
   }
-  else if (keyPressed == true){
-    attackInterval++;
-  }
 }
 }
 
 void mouseClicked (){
-  if (mouseX > 200 & mouseX < 300 & mouseY > 447 & mouseY < 482 & playerHealth > 0){
+  if (mouseIsHovering & playerHealth > 0){
   enemyHealth -= weaponDamage;
   }
   if (mouseX > 50 & mouseX < 150 & mouseY > 447 & mouseY < 482 & potionAmmount > 0 & playerHealth > 0){
     playerHealth += healthPotion;
     potionAmmount -= 1; 
 }
+}
+public Combat_System(String identifier, int x, int y, int owidth, int oheight)
+{
+  this(identifier, x, y, owidth, oheight, "");
+}
+
+public Combat_System(String identifier, int x, int y, int owidth, int oheight, String gameObjectImageFile)
+{
+  super(identifier,x,y,owidth,oheight,"");
 }
 }
