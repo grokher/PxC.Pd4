@@ -1,5 +1,5 @@
 class Combat_System extends GameObject{
-int playerHealth = 100;
+int playerHealth = 120;
 int enemyHealth = 200;
 int enemyDamage = 15;
 int weaponDamage = 5;
@@ -7,31 +7,33 @@ int potionAmmount = 3;
 int attackInterval = 1;
 int time;
 int localTime;
-boolean fighting = true;
+boolean fighting = false;
 int healthPotion = 20;
 
 void draw (){
-   //attack button
-  fill (#8B1C1C);
-  rect (250, 454.5, 100, 35);
-  
+  if (fighting == true){
+    
   //health potion button
+  rectMode (CENTER);
   fill (#16DB4C);
-  rect (100, 454.5, 100, 35);
+  rect (114, 546.0, 153, 65);
   
   fill (#020302);
   textSize (32);
-  text (enemyHealth,26,56);
+  text ("enemy " + enemyHealth,26,56);
   
   fill (#020302);
   textSize (32);
-  text (playerHealth,403,56);
+  text ("player " + playerHealth,621,56);
   
-  text (potionAmmount, 91, 466);
+  text (potionAmmount, 103, 561);
   
-   time = millis()/1500;
+   time = millis()/2000;
+   if (enemyHealth < 1){
+     fighting = false;
+   }
    
-    if (playerHealth > 100){
+    if (playerHealth > 120){
     playerHealth = 100;
   }
    
@@ -39,12 +41,11 @@ void draw (){
     playerHealth = 0;
   }
   
-  if (fighting == true){
   if(time - attackInterval == 1 && enemyHealth > 0)
   {
     playerHealth -= enemyDamage;
     attackInterval++;
-  }
+}
 }
 }
 
@@ -52,9 +53,10 @@ void mouseClicked (){
   if (mouseIsHovering & playerHealth > 0){
   enemyHealth -= weaponDamage;
   }
-  if (mouseX > 50 & mouseX < 150 & mouseY > 447 & mouseY < 482 & potionAmmount > 0 & playerHealth > 0){
+  if (mouseX > 37.4 & mouseX < 190.6 & mouseY > 513.5 & mouseY < 578.5 & potionAmmount > 0 & playerHealth > 0){
     playerHealth += healthPotion;
     potionAmmount -= 1; 
+   
 }
 }
 public Combat_System(String identifier, int x, int y, int owidth, int oheight)
