@@ -3,9 +3,12 @@ import processing.sound.*;
 int wwidth = 800;
 int wheight = 600;
 
+Combat_System combatSystem;
+
 final SceneManager sceneManager = new SceneManager();
 final InventoryManager inventoryManager = new InventoryManager();
-SoundFile button1,button2;
+SoundFile button1,button2,slash;
+
 
 void settings()
 {
@@ -15,11 +18,11 @@ void settings()
 void setup()
 {
   //start of mainMenu is still empty for now
-  
+
   
   button1 = new SoundFile(this, "button1.wav");
   button2 = new SoundFile(this, "button2.wav");
-
+  slash = new SoundFile(this, "swordSlash.wav");
   //start of mainMenu is still empty for now
   Scene mainMenu = new Scene("sceneMainMenu", "player.jpg");
   GameObject weaponKatana = new GameObject("weapon_scene0x", 300,200,300,500, "tempKatana.png");
@@ -79,8 +82,10 @@ void setup()
   Scene scene04 = new Scene("scene04", "backJorogumo.png"); 
   MoveToSceneObject returnObject3 = new MoveToSceneObject("goBack_scene04",350,500,100,100,"arrowDownDark.png", true);
   scene04.addGameObject(returnObject3);
-  GameObject enemy01 = new Combat_System("enemy_Jorogumo01", wwidth / 6 , wheight / 6,500,450, "enemyJorogumo.png"); 
+  GameObject enemy01 = new GameObject("enemy_Jorogumo01", wwidth / 6 , wheight / 6,500,450, "enemyJorogumo.png"); 
   scene04.addGameObject(enemy01);
+  MoveToSceneObject combatScene = new MoveToSceneObject("goToCombatSceneJorogumo",300 , 150,300,250,"clickableObject.png","combatJorogumo");
+ scene04.addGameObject(combatScene);
   //enemy01.oheight = random();
   /*TextObject endGame = new TextObject("smallText_scene04", 430, 590, 50, 50, "medal1.png", "Congratulations. You finished the game!");
   scene04.addGameObject(endGame);*/
@@ -110,6 +115,13 @@ void setup()
   
   scene06.addGameObject(weaponKatana);
   
+    Scene sceneCombatJorogumo = new Scene("combatJorogumo", "backJorogumo.png");
+  //set boolean to true to start combat
+  GameObject Jorogumo = new Combat_System("Jorogumo",250,200,500,450,"enemyJorogumo.png");
+  sceneCombatJorogumo.addGameObject(Jorogumo);
+  
+  MoveToSceneObject returnObject5 = new MoveToSceneObject("goBack_scene04",350,500,100,100,"arrowDownDark.png", true);
+  sceneCombatJorogumo.addGameObject(returnObject5);
   
   
   //do sceneManager.addScene(scene0X); to add a new scene to what we already have
@@ -120,6 +132,7 @@ void setup()
   sceneManager.addScene(scene04);
   sceneManager.addScene(scene05);
   sceneManager.addScene(scene06);
+  sceneManager.addScene(sceneCombatJorogumo);
   
   /*Collectable apple = new Collectable("apple", "back04_apple.png");
   MoveToSceneObject object7 = new MoveToSceneObject("goToScene04_scene01", 206, 461, 50, 50, "arrowUp.png", "scene04");*/
@@ -131,7 +144,8 @@ void draw()
 {
   sceneManager.getCurrentScene().draw(wwidth, wheight);
   sceneManager.getCurrentScene().updateScene();
-  inventoryManager.clearMarkedForDeathCollectables();
+ inventoryManager.clearMarkedForDeathCollectables();
+  //combatSystem.endCombat(false);
 }
 
 void mouseMoved() {

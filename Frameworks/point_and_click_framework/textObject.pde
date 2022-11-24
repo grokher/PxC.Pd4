@@ -24,7 +24,7 @@ class TextObject extends GameObject {
   }
   @Override
   public void mouseClicked() {
-    displayText = false;
+    displayText = true;
     if(mouseIsHovering) { displayText = true; }
   }
   
