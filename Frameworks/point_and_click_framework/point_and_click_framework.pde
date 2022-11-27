@@ -7,7 +7,7 @@ Combat_System combatSystem;
 
 final SceneManager sceneManager = new SceneManager();
 final InventoryManager inventoryManager = new InventoryManager();
-SoundFile button1,button2,slash;
+SoundFile button1,button2,slash, punch;
 
 int x;
 int y;
@@ -27,7 +27,8 @@ void setup()
  
   button1 = new SoundFile(this, "button1.wav");
   button2 = new SoundFile(this, "button2.wav");
-  slash = new SoundFile(this, "swordSlash.wav"); 
+  slash = new SoundFile(this, "swordSlash.wav");
+  punch = new SoundFile(this, "punch.wav");
   
   //start of mainMen
   

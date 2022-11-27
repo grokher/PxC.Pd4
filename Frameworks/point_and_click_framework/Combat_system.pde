@@ -54,6 +54,8 @@ class Combat_System extends GameObject { //<>//
       {
         println("reaching the player damage");
         playerHealth -= enemyDamage;
+        punch.play();
+        punch.amp(0.5);
         attackInterval++;
       }
 
