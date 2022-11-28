@@ -11,7 +11,15 @@ SoundFile button1,button2,slash, punch;
 
 int x;
 int y;
+
 int kappaHealth = 200;
+int jorogumoHealth = 250;
+int kappaDamage = 10;
+int jorogumoDamage = 15;
+int dragonHealth = 500;
+int dragonDamage = 25;
+int kitsuneHealth = 250;
+int kitsuneDamage = 10;
 
 void settings()
 {
@@ -93,7 +101,7 @@ void setup()
   
   //combat scene with kappa
   Scene sceneCombatKappa = new Scene("combatKappa","backKappa.jpg");
-  Combat_System kappa = new Combat_System("hitbox_Kappa",x,y,200,200,"kappa.png",kappaHealth);
+  Combat_System kappa = new Combat_System("hitbox_Kappa",x,y,200,200,"kappa.png",kappaHealth, kappaDamage);
   sceneCombatKappa.addGameObject(kappa);
   GameObject hitboxKappa = new GameObject("Kappa",x,y,200,200,"kappa.png");
   sceneCombatKappa.addGameObject(hitboxKappa);
@@ -106,7 +114,7 @@ void setup()
   
   //combat scene with Jorogumo
   Scene sceneCombatJorogumo = new Scene("combatJorogumo", "backJorogumo.png");
-  Combat_System hitboxJorogumo = new Combat_System("Jorogumo", x , y ,200,200, "jorogumo.png");
+  Combat_System hitboxJorogumo = new Combat_System("Jorogumo", x , y ,200,200, "jorogumo.png", jorogumoHealth, jorogumoDamage);
   sceneCombatJorogumo.addGameObject(hitboxJorogumo);
   GameObject jorogumo = new GameObject("enemy_Jorogumo01",x , y ,200,200, "jorogumo.png"); 
   sceneCombatJorogumo.addGameObject(jorogumo);
@@ -116,7 +124,7 @@ void setup()
   
   //combat scene with dragon
   Scene sceneCombatDragon = new Scene("combatDragon","tempBack.jpg"); // need finished? background
-  Combat_System hitboxDragon = new Combat_System("hitbox_dragon",75,0,550,500,"dragon01.png");
+  Combat_System hitboxDragon = new Combat_System("hitbox_dragon",75,0,550,500,"dragon01.png", dragonHealth, dragonDamage);
   sceneCombatDragon.addGameObject(hitboxDragon);
   GameObject dragon = new GameObject("dragon",75,0,550,500,"dragon01.png");
   sceneCombatDragon.addGameObject(dragon);
