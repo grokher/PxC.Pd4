@@ -86,10 +86,11 @@ class Combat_System extends GameObject { //<>// //<>//
     this.gameObjectImage = loadImage(gameObjectImageFile);
   }
   
-  public Combat_System(String identifier, int x, int y, int owidth, int oheight, String gameObjectImageFile, int health)
+  public Combat_System(String identifier, int x, int y, int owidth, int oheight, String gameObjectImageFile, int health , int damage)
   {
     super(identifier,x,y,owidth,oheight,gameObjectImageFile);
     
     this.enemyHealth = health;
+    this.enemyDamage = damage;
   }
 }
