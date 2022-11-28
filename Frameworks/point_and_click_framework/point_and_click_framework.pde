@@ -76,24 +76,26 @@ void setup()
   scene04.addGameObject(returnObject3);
   GameObject enemy01 = new GameObject("enemy_Jorogumo01", 300,150,350,250, "jorogumo.png"); 
   scene04.addGameObject(enemy01);
-  MoveToSceneObject combatScene = new MoveToSceneObject("goToCombatSceneJorogumo",300 , 150,300,250,"clickableObject.png","combatJorogumo");
-  scene04.addGameObject(combatScene);
+  MoveToSceneObject combatSceneJorogumo = new MoveToSceneObject("goToCombatSceneJorogumo",300 , 150,300,250,"clickableObject.png","combatJorogumo");
+  scene04.addGameObject(combatSceneJorogumo);
   scene04.addGameObject(weaponKatana);
   
-  //start of scene05 game screen
+  //start of scene05 game screen (boss)
   Scene scene05 = new Scene("scene06", "backBoss01.jpg");
-  GameObject enemyDragon = new GameObject("enemy_Dragon01",75,0,550,550, "dragon01.png");
+  GameObject enemyDragon = new GameObject("enemy_Dragon01",75,0,550,450, "dragon01.png");
   scene05.addGameObject(enemyDragon);
   MoveToSceneObject returnObject6 = new MoveToSceneObject("goback_scene05",350,500,100,100,"arrowDownDark.png", true);
   scene05.addGameObject(returnObject6);
+  MoveToSceneObject combatSceneDragon = new MoveToSceneObject("goToCombatSceneDragon",200,0,400,450,"clickableObject.png","combatDragon");
+  scene05.addGameObject(combatSceneDragon);
   scene05.addGameObject(weaponKatana);
   
   
   //combat scene with kappa
   Scene sceneCombatKappa = new Scene("combatKappa","backKappa.jpg");
-  Combat_System kappa = new Combat_System("Kappa",x,y,200,200,"kappa.png");
+  Combat_System kappa = new Combat_System("hitbox_Kappa",x,y,200,200,"kappa.png");
   sceneCombatKappa.addGameObject(kappa);
-  GameObject hitboxKappa = new GameObject("hitbox_Kappa",x,y,200,200,"kappa.png");
+  GameObject hitboxKappa = new GameObject("Kappa",x,y,200,200,"kappa.png");
   sceneCombatKappa.addGameObject(hitboxKappa);
   MoveToSceneObject returnObject5 = new MoveToSceneObject("goBack_scene02",350,500,100,100,"arrowDownDark.png", true);
   sceneCombatKappa.addGameObject(returnObject5);
@@ -104,16 +106,21 @@ void setup()
   
   //combat scene with Jorogumo
   Scene sceneCombatJorogumo = new Scene("combatJorogumo", "backJorogumo.png");
-  Combat_System jorogumo = new Combat_System("Jorogumo", x , y ,200,200, "jorogumo.png");
-  sceneCombatJorogumo.addGameObject(jorogumo);
-  GameObject hitboxJorogumo = new GameObject("enemy_Jorogumo01",x , y ,200,200, "jorogumo.png"); 
+  Combat_System hitboxJorogumo = new Combat_System("Jorogumo", x , y ,200,200, "jorogumo.png");
   sceneCombatJorogumo.addGameObject(hitboxJorogumo);
-  MoveToSceneObject returnObject7 = new MoveToSceneObject("goBack_scene04",350,500,100,100,"arrowDownDark.png", true);
-  sceneCombatJorogumo.addGameObject(returnObject7);
+  GameObject jorogumo = new GameObject("enemy_Jorogumo01",x , y ,200,200, "jorogumo.png"); 
+  sceneCombatJorogumo.addGameObject(jorogumo);
+  //MoveToSceneObject returnObject7 = new MoveToSceneObject("goBack_scene04",350,500,100,100,"arrowDownDark.png", true);
+  //sceneCombatJorogumo.addGameObject(returnObject7);
   sceneCombatJorogumo.addGameObject(returnObject5);
   
   //combat scene with dragon
   Scene sceneCombatDragon = new Scene("combatDragon","tempBack.jpg"); // need finished? background
+  Combat_System hitboxDragon = new Combat_System("hitbox_dragon",75,0,550,500,"dragon01.png");
+  sceneCombatDragon.addGameObject(hitboxDragon);
+  GameObject dragon = new GameObject("dragon",75,0,550,500,"dragon01.png");
+  sceneCombatDragon.addGameObject(dragon);
+  sceneCombatDragon.addGameObject(returnObject5);
   //add Dragon combatSystem
   
   //do sceneManager.addScene(scene0X); to add a new scene to what we already have
