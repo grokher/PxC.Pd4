@@ -110,6 +110,10 @@ void setup()
   
   //combat scene with kitsune
   Scene sceneCombatKitsune = new Scene("combatKitsune","backKitsune01.jpg");
+  Combat_System hitboxKitsune = new Combat_System("hitboxKitsune",0,0,0,0,"kitsune.png",kitsuneHealth,kitsuneDamage);
+  sceneCombatKitsune.addGameObject(hitboxKitsune);
+  GameObject kitsune = new GameObject("",x,y,200,200,"");
+  sceneCombatKitsune.addGameObject(kitsune);
   //add kitsune image and combat in here
   
   //combat scene with Jorogumo
