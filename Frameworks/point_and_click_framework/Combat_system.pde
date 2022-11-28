@@ -1,6 +1,6 @@
 class Combat_System extends GameObject { //<>//
   int playerHealth = 120;
-  int enemyHealth = 200;
+  int enemyHealth = 250;
   int enemyDamage = 15;
   int weaponDamage = 5;
   int potionAmmount = 3;
@@ -50,15 +50,21 @@ class Combat_System extends GameObject { //<>//
 
       time = millis()/2000;
 
-      if (time - attackInterval >= 1 && enemyHealth > 0)
-      {
+      if (time - attackInterval >= 1 && enemyHealth > 0){
         println("reaching the player damage");
         playerHealth -= enemyDamage;
         punch.play();
         punch.amp(0.5);
         attackInterval++;
       }
-
+      
+            if (time - attackInterval >= 1 && enemyHealth > 0 & fighting == true){
+        punch.play();
+        punch.amp(0.5);
+      }
+      if (fighting == false){
+        punch.amp(0.0);
+      }
   }
 
   void mouseClicked () {
