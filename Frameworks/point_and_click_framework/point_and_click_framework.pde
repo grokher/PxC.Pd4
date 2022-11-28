@@ -11,7 +11,7 @@ SoundFile button1,button2,slash, punch;
 
 int x;
 int y;
-
+int kappaHealth = 200;
 
 void settings()
 {
@@ -93,7 +93,7 @@ void setup()
   
   //combat scene with kappa
   Scene sceneCombatKappa = new Scene("combatKappa","backKappa.jpg");
-  Combat_System kappa = new Combat_System("hitbox_Kappa",x,y,200,200,"kappa.png");
+  Combat_System kappa = new Combat_System("hitbox_Kappa",x,y,200,200,"kappa.png",kappaHealth);
   sceneCombatKappa.addGameObject(kappa);
   GameObject hitboxKappa = new GameObject("Kappa",x,y,200,200,"kappa.png");
   sceneCombatKappa.addGameObject(hitboxKappa);

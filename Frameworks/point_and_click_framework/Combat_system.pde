@@ -1,4 +1,4 @@
-class Combat_System extends GameObject { //<>//
+class Combat_System extends GameObject { //<>// //<>//
   int playerHealth = 120;
   int enemyHealth = 250;
   int enemyDamage = 15;
@@ -10,6 +10,7 @@ class Combat_System extends GameObject { //<>//
   boolean fighting = false;
   int healthPotion = 20;
   PImage gameObjectImage;
+  int health;
 
   void draw () {
     if (fighting == false){
@@ -83,5 +84,12 @@ class Combat_System extends GameObject { //<>//
   {
     super(identifier, x, y, owidth, oheight, gameObjectImageFile);
     this.gameObjectImage = loadImage(gameObjectImageFile);
+  }
+  
+  public Combat_System(String identifier, int x, int y, int owidth, int oheight, String gameObjectImageFile, int health)
+  {
+    super(identifier,x,y,owidth,oheight,gameObjectImageFile);
+    
+    this.enemyHealth = health;
   }
 }
