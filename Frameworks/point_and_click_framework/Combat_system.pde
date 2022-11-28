@@ -58,12 +58,8 @@ class Combat_System extends GameObject { //<>//
         attackInterval++;
       }
       
-            if (time - attackInterval >= 1 && enemyHealth > 0 & fighting == true){
-        punch.play();
-        punch.amp(0.5);
-      }
       if (fighting == false){
-        punch.amp(0.0);
+        punch.stop();
       }
   }
 
