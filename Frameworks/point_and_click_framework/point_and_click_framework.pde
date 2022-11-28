@@ -13,13 +13,13 @@ int x;
 int y;
 
 int kappaHealth = 200;
-int jorogumoHealth = 250;
 int kappaDamage = 10;
+int jorogumoHealth = 250;
 int jorogumoDamage = 15;
-int dragonHealth = 500;
-int dragonDamage = 25;
 int kitsuneHealth = 250;
 int kitsuneDamage = 10;
+int dragonHealth = 500;
+int dragonDamage = 25;
 
 void settings()
 {
@@ -63,7 +63,7 @@ void setup()
   //start of scene02 game screen
   
   Scene scene02 = new Scene("scene02", "backKappa.jpg");
-  MoveToSceneObject returnObject1 = new MoveToSceneObject("goBack_scene02", 350, 500, 100, 100, "arrowDownDark.png", true);
+  MoveToSceneObject returnObject1 = new MoveToSceneObject("goBack_scene02", 550, 500, 100, 100, "map.jpg", true);
   scene02.addGameObject(returnObject1);
   GameObject enemyKappa = new GameObject("enemy_Kappa01",150,150,300,300,"kappa.png");
   scene02.addGameObject(enemyKappa);
@@ -76,6 +76,10 @@ void setup()
   Scene scene03 = new Scene("scene03", "backKitsune01.jpg");
   MoveToSceneObject returnObject2 = new MoveToSceneObject("goBack_scene03", 350, 500, 100, 100, "arrowDownDark.png", true);
   scene03.addGameObject(returnObject2);
+  GameObject enemyKitsune = new GameObject("enemy_Kitsune01",150,150,200,200,"kitsune.png");
+  scene03.addGameObject(enemyKitsune);
+  MoveToSceneObject combatSceneKitsune = new MoveToSceneObject("goToCombatSceneKitsune",300 , 150,300,250,"clickableObject.png","combatKitsune");
+  scene03.addGameObject(combatSceneKitsune);
   scene03.addGameObject(weaponKatana);
   
   //start of scene04 game screen (Jorogumo)
@@ -110,10 +114,11 @@ void setup()
   
   //combat scene with kitsune
   Scene sceneCombatKitsune = new Scene("combatKitsune","backKitsune01.jpg");
-  Combat_System hitboxKitsune = new Combat_System("hitboxKitsune",0,0,0,0,"kitsune.png",kitsuneHealth,kitsuneDamage);
+  Combat_System hitboxKitsune = new Combat_System("hitboxKitsune",x,y,200,200,"kitsune.png",kitsuneHealth,kitsuneDamage);
   sceneCombatKitsune.addGameObject(hitboxKitsune);
-  GameObject kitsune = new GameObject("",x,y,200,200,"");
+  GameObject kitsune = new GameObject("kitsune",x,y,200,200,"kitsune.png");
   sceneCombatKitsune.addGameObject(kitsune);
+  sceneCombatKitsune.addGameObject(returnObject5);
   //add kitsune image and combat in here
   
   //combat scene with Jorogumo
