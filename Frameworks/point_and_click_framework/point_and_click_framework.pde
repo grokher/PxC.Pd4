@@ -3,6 +3,7 @@ import processing.sound.*;
 
 int wwidth = 800;
 int wheight = 600;
+PImage potion;
 
 Combat_System combatSystem;
 Movie cutsceneKitsune;
@@ -33,7 +34,7 @@ void setup()
   x = (int)random(150,600);
   y = (int)random(150,400);
   
-  combatSystem.potion = loadImage("potion.png");
+  potion = loadImage("potion.png");
   
   cutsceneKitsune = new Movie(this, "kitsuneCutscene.mov");
   cutsceneKitsune.loop();

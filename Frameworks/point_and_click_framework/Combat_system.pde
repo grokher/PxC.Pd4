@@ -1,4 +1,4 @@
-class Combat_System extends GameObject { //<>// //<>// //<>//
+class Combat_System extends GameObject { //<>// //<>// //<>// //<>// //<>//
   int playerHealth = 120;
   int enemyHealth = 250;
   int enemyDamage = 15;
@@ -11,7 +11,6 @@ class Combat_System extends GameObject { //<>// //<>// //<>//
   int healthPotion = 20;
   PImage gameObjectImage;
   int health;
-  PImage potion;
 
   void draw () {
     if (fighting == false){
@@ -20,7 +19,7 @@ class Combat_System extends GameObject { //<>// //<>// //<>//
 
     if(fighting == true){
       //health potion button
-      image(potion, 0, 0);
+      image(potion, 0, 446);
 
       fill (#020302);
       textSize (32);
@@ -30,7 +29,7 @@ class Combat_System extends GameObject { //<>// //<>// //<>//
       textSize (32);
       text ("player " + playerHealth, 621, 56);
 
-      text (potionAmmount, 103, 561);
+      text (potionAmmount, 100, 569);
     }
     
       if (enemyHealth < 1) {
@@ -67,7 +66,7 @@ class Combat_System extends GameObject { //<>// //<>// //<>//
       fighting = true;
       println("reaching the enemy damage");
     }
-    if (mouseX > 37.4 & mouseX < 190.6 & mouseY > 513.5 & mouseY < 578.5 & potionAmmount > 0 & playerHealth > 0) {
+    if (mouseX > 22 & mouseX < 136 & mouseY > 467 & mouseY < 581 & potionAmmount > 0 & playerHealth > 0) {
       playerHealth += healthPotion;
       potionAmmount -= 1;
     }
