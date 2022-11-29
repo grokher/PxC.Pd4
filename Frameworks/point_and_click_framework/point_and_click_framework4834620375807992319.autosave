@@ -3,7 +3,6 @@ import processing.sound.*;
 
 int wwidth = 800;
 int wheight = 600;
-PImage potion;
 
 Combat_System combatSystem;
 enemyMovement enemyMovement;
@@ -32,13 +31,13 @@ void settings()
 
 void setup()
 {
+  enemyMovement = new enemyMovement();
+  
+  enemyMovement.kappa = loadImage("kappa.png");
   x = (int)random(150,600);
   y = (int)random(150,400);
   
-  enemyMovement = new enemyMovement();
-  enemyMovement.kappa = loadImage("kappa.png");
-  
-  potion = loadImage("potion.png");
+  //combatSystem.potion = loadImage("potion.png");
   
   cutsceneKitsune = new Movie(this, "kitsuneCutscene.mov");
   cutsceneKitsune.loop();
@@ -48,7 +47,7 @@ void setup()
   slash = new SoundFile(this, "swordSlash.wav");
   punch = new SoundFile(this, "punch.wav");
   
-  //start of mainMen
+  //start of mainMenu
   Scene mainMenu = new Scene("sceneMainMenu", "player.jpg");
   GameObject weaponKatana = new GameObject("weapon_scene0x", 350,150,300,500, "katana.png");
   TextObject startButton = new TextObject("startText_mainMenu",450,100,50,50,"","Start Game");
@@ -113,8 +112,8 @@ void setup()
   
   
   //combat scene with kappa
+  enemyMovement.isFightingKappa(true);
   Scene sceneCombatKappa = new Scene("combatKappa","backKappa.jpg");
-  
   Combat_System kappa = new Combat_System("hitbox_Kappa",enemyMovement.kappaX,y,200,200,"kappa.png",kappaHealth, kappaDamage);
   sceneCombatKappa.addGameObject(kappa);
   GameObject hitboxKappa = new GameObject("Kappa",enemyMovement.kappaX,y,200,200,"kappa.png");
@@ -169,10 +168,7 @@ void draw()
   sceneManager.getCurrentScene().draw(wwidth, wheight);
   sceneManager.getCurrentScene().updateScene();
   inventoryManager.clearMarkedForDeathCollectables();
-  if(enemyMovement.isKappa == true)
-  {
-    isInCombat();
-  }
+  if()
   //image(cutsceneKitsune, 0, 0);
 }
 
@@ -185,9 +181,4 @@ void mouseClicked() {
 }
 void movieEvent(Movie m) {
   m.read();
-}
-void isInCombat()
-{
-  enemyMovement.isFightingKappa(true);
-  enemyMovement.kappaX = x;
 }
