@@ -10,13 +10,12 @@ class enemyMovement
   
   boolean isKappa,isKitsune,isJorogumo,isDragon;
   
-  public void isFightingKappa(boolean isKappa)
-  {
+  void draw (){
     if(isKappa == true)
     {
       image(kappa,kappaX,kappaY);
-      kappaX = 50;
-      kappaY = 250;
+      kappaX = 0;
+      kappaY = 0;
       
       if(kappaX <= -50)
       {
@@ -27,7 +26,6 @@ class enemyMovement
         kappaX += -1 * speed;
       }
     }
-  }
   
   
   
@@ -55,5 +53,4 @@ class enemyMovement
   
   
   
-  
-}
+  }}

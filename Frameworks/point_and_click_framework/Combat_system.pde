@@ -1,4 +1,4 @@
-class Combat_System extends GameObject { //<>// //<>// //<>// //<>// //<>//
+class Combat_System extends GameObject { //<>// //<>// //<>// //<>// //<>// //<>//
   int playerHealth = 120;
   int enemyHealth = 250;
   int enemyDamage = 15;
@@ -11,8 +11,11 @@ class Combat_System extends GameObject { //<>// //<>// //<>// //<>// //<>//
   int healthPotion = 20;
   PImage gameObjectImage;
   int health;
+  float punchSound = random (1);
 
   void draw () {
+    println (punchSound);
+    
     if (fighting == false){
       playerHealth = 120;
     }
@@ -43,6 +46,8 @@ class Combat_System extends GameObject { //<>// //<>// //<>// //<>// //<>//
 
       if (playerHealth < 1) {
         playerHealth = 0;
+        punch2.amp(0);
+        punch.amp(0);
       }
 
       time = millis()/2000;
@@ -50,8 +55,18 @@ class Combat_System extends GameObject { //<>// //<>// //<>// //<>// //<>//
       if (time - attackInterval >= 1 && enemyHealth > 0){
         println("reaching the player damage");
         playerHealth -= enemyDamage;
+        punchSound = random (1);
+        
+        if (punchSound > 0.5 & playerHealth >0){
         punch.play();
         punch.amp(0.5);
+        }
+        
+        if (punchSound < 0.5 & playerHealth >0){
+        punch2.play();
+        punch2.amp(0.5);
+        }
+        
         attackInterval++;
       }
       

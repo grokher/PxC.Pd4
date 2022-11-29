@@ -3,15 +3,14 @@ import processing.sound.*;
 
 int wwidth = 800;
 int wheight = 600;
-PImage potion, playButton;
+PImage potion;
 
 Combat_System combatSystem;
-enemyMovement enemyMovement;
 Movie cutsceneKitsune;
 
 final SceneManager sceneManager = new SceneManager();
 final InventoryManager inventoryManager = new InventoryManager();
-SoundFile button1,button2,slash, punch, punch2;
+SoundFile button1,button2,slash, punch;
 
 int x;
 int y;
@@ -35,11 +34,7 @@ void setup()
   x = (int)random(150,600);
   y = (int)random(150,400);
   
-  enemyMovement = new enemyMovement();
-  enemyMovement.kappa = loadImage("kappa.png");
-  
   potion = loadImage("potion.png");
-  playButton = loadImage("playButton.png");
   
   cutsceneKitsune = new Movie(this, "kitsuneCutscene.mov");
   cutsceneKitsune.loop();
@@ -47,15 +42,14 @@ void setup()
   button1 = new SoundFile(this, "button1.wav");
   button2 = new SoundFile(this, "button2.wav");
   slash = new SoundFile(this, "swordSlash.wav");
-  punch = new SoundFile(this, "hit.wav");
-  punch2 = new SoundFile(this, "hit2.wav");
+  punch = new SoundFile(this, "punch.wav");
   
   //start of mainMen
   Scene mainMenu = new Scene("sceneMainMenu", "player.jpg");
   GameObject weaponKatana = new GameObject("weapon_scene0x", 350,150,300,500, "katana.png");
-  MoveToSceneObject startButton = new MoveToSceneObject("startText_mainMenu",450,100,50,50,"playButton.png","");
+  TextObject startButton = new TextObject("startText_mainMenu",450,100,50,50,"","Start Game");
   mainMenu.addGameObject(startButton);
-  MoveToSceneObject scene01MoveTo = new MoveToSceneObject("goToScene01_sceneMainMenu",50,100,595,550,"playButton.png","scene01");
+  MoveToSceneObject scene01MoveTo = new MoveToSceneObject("goToScene01_sceneMainMenu",450,100,95,50,"clickableObject.png","scene01");
   mainMenu.addGameObject(scene01MoveTo);
 
   
@@ -92,7 +86,7 @@ void setup()
   MoveToSceneObject combatSceneKitsune = new MoveToSceneObject("goToCombatSceneKitsune",150, 150,200,200,"clickableObject.png","combatKitsune");
   scene03.addGameObject(combatSceneKitsune);
   scene03.addGameObject(weaponKatana);
-  
+
   //start of scene04 game screen (Jorogumo)
   Scene scene04 = new Scene("scene04", "backJorogumo.png"); 
   MoveToSceneObject returnObject3 = new MoveToSceneObject("goBack_scene04",350,500,100,100,"arrowDownDark.png", true);
@@ -116,10 +110,9 @@ void setup()
   
   //combat scene with kappa
   Scene sceneCombatKappa = new Scene("combatKappa","backKappa.jpg");
-  
-  Combat_System kappa = new Combat_System("hitbox_Kappa",enemyMovement.kappaX,y,200,200,"kappa.png",kappaHealth, kappaDamage);
+  Combat_System kappa = new Combat_System("hitbox_Kappa",x,y,200,200,"kappa.png",kappaHealth, kappaDamage);
   sceneCombatKappa.addGameObject(kappa);
-  GameObject hitboxKappa = new GameObject("Kappa",enemyMovement.kappaX,y,200,200,"kappa.png");
+  GameObject hitboxKappa = new GameObject("Kappa",x,y,200,200,"kappa.png");
   sceneCombatKappa.addGameObject(hitboxKappa);
   MoveToSceneObject returnObject5 = new MoveToSceneObject("goBack_scene02",350,500,100,100,"arrowDownDark.png", true);
   sceneCombatKappa.addGameObject(returnObject5);
@@ -167,15 +160,10 @@ void setup()
 
 void draw()
 {
-  cutsceneKitsune.stop();
+  cutsceneKitsune.pause();
   sceneManager.getCurrentScene().draw(wwidth, wheight);
   sceneManager.getCurrentScene().updateScene();
   inventoryManager.clearMarkedForDeathCollectables();
-  if(enemyMovement.isKappa == true)
-  {
-    isInCombat();
-  }
-  //image(cutsceneKitsune, 0, 0);
 }
 
 void mouseMoved() {
@@ -187,9 +175,4 @@ void mouseClicked() {
 }
 void movieEvent(Movie m) {
   m.read();
-}
-void isInCombat()
-{
-  enemyMovement.isKappa = true;
-  enemyMovement.kappaX = x;
 }
