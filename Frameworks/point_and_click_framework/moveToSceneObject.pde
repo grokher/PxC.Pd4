@@ -2,7 +2,6 @@ class MoveToSceneObject extends GameObject {
   
   private String nextSceneIdentifier;
   private boolean moveBack;
-  private boolean kappa;
   
   public MoveToSceneObject(String identifier, int x, int y, int owidth, int oheight, boolean moveBack) {
     this(identifier, x, y, owidth, oheight, "", moveBack);
@@ -15,14 +14,13 @@ class MoveToSceneObject extends GameObject {
   }
   
   public MoveToSceneObject(String identifier, int x, int y, int owidth, int oheight, String nextSceneIdentifier) {
-    this(identifier, x, y, owidth, oheight, "", nextSceneIdentifier, false);
-    this.kappa = false;
+    this(identifier, x, y, owidth, oheight, "", nextSceneIdentifier);
+    
   }
   
-  public MoveToSceneObject(String identifier, int x, int y, int owidth, int oheight, String gameObjectImageFile, String nextSceneIdentifier, boolean kappa) {
+  public MoveToSceneObject(String identifier, int x, int y, int owidth, int oheight, String gameObjectImageFile, String nextSceneIdentifier) {
     super(identifier, x, y, owidth, oheight, gameObjectImageFile);
     this.nextSceneIdentifier = nextSceneIdentifier;
-    this.kappa = kappa;
     this.moveBack = false;
   }
   
