@@ -53,9 +53,9 @@ void setup()
   //start of mainMen
   Scene mainMenu = new Scene("sceneMainMenu", "player.jpg");
   GameObject weaponKatana = new GameObject("weapon_scene0x", 350,150,300,500, "katana.png");
-  MoveToSceneObject startButton = new MoveToSceneObject("startText_mainMenu",450,100,50,50,"playButton.png","");
-  mainMenu.addGameObject(startButton);
-  MoveToSceneObject scene01MoveTo = new MoveToSceneObject("goToScene01_sceneMainMenu",50,100,595,550,"playButton.png","scene01");
+  /*MoveToSceneObject startButton = new MoveToSceneObject("startText_mainMenu",450,100,50,50,"playButton.png","");
+  mainMenu.addGameObject(startButton);*/
+  MoveToSceneObject scene01MoveTo = new MoveToSceneObject("goToScene01_sceneMainMenu",40,140,200,125,"playButton.png","scene01");
   mainMenu.addGameObject(scene01MoveTo);
 
   
