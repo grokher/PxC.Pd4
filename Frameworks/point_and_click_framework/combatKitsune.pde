@@ -12,14 +12,24 @@ class combatKitsune extends GameObject { //<>// //<>// //<>// //<>// //<>// //<>
   PImage gameObjectImage;
   int health;
   float punchSound = random (1);
+  boolean kitsuneAlive = true;
 
   void draw () {
-    if (fighting == false){
+    if (fighting == false & kitsuneAlive == true){
       playerHealth = 120;
       
-      
+      imageMode (CORNER);
       image(cutsceneKitsune, 0, 0);
       cutsceneKitsune.play();
+      
+      imageMode (CENTER);
+      strokeWeight (3);
+      fill (#FFFFFC);
+      rectMode (CENTER);
+      rect (720, 40, 130, 60);
+      image(skipButton, 700, 20);
+      
+      imageMode (CORNER);
     }
 
     if(fighting == true){
@@ -40,6 +50,7 @@ class combatKitsune extends GameObject { //<>// //<>// //<>// //<>// //<>// //<>
       if (enemyHealth < 1) {
         fighting = false;
           enemyHealth = 0;
+          kitsuneAlive = false;
       }
 
       if (playerHealth > 120) {
@@ -74,18 +85,22 @@ class combatKitsune extends GameObject { //<>// //<>// //<>// //<>// //<>// //<>
       
       if (fighting == false){
         punch.stop();
+        punch2.stop();
       }
   }
 
   void mouseClicked () {
     if (mouseIsHovering & playerHealth > 0) {
       enemyHealth -= weaponDamage;
-      fighting = true;
       println("reaching the enemy damage");
     }
     if (mouseX > 22 & mouseX < 136 & mouseY > 467 & mouseY < 581 & potionAmmount > 0 & playerHealth > 0) {
       playerHealth += healthPotion;
       potionAmmount -= 1;
+    }
+    if (fighting == false & mouseX < 785 & mouseX > 654 & mouseY < 69 & mouseY > 9){
+      fighting = true;
+      cutsceneKitsune.stop();
     }
   }
   public combatKitsune (String identifier, int x, int y, int owidth, int oheight)

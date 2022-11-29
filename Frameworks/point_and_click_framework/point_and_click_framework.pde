@@ -3,7 +3,7 @@ import processing.sound.*;
 
 int wwidth = 800;
 int wheight = 600;
-PImage potion, playButton, weaponSelectionKappa, inventoryButton;
+PImage potion, playButton, weaponSelectionKappa, inventoryButton, skipButton;
 
 //Combat_System combatSystem;
 enemyMovement enemyMovement;
@@ -42,6 +42,7 @@ void setup()
   playButton = loadImage("playButton.png");
   weaponSelectionKappa = loadImage("weaponSelectionKappa.png");
   inventoryButton = loadImage ("inventoryButton.png");
+  skipButton = loadImage ("skipButton.png");
   
   cutsceneKitsune = new Movie(this, "kitsuneCutscene.mov");
  
@@ -168,7 +169,6 @@ void setup()
 
 void draw()
 {
-  cutsceneKitsune.pause();
   sceneManager.getCurrentScene().draw(wwidth, wheight);
   sceneManager.getCurrentScene().updateScene();
   inventoryManager.clearMarkedForDeathCollectables();
