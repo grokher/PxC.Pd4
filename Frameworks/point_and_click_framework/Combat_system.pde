@@ -11,6 +11,7 @@ class Combat_System extends GameObject { //<>// //<>// //<>//
   int healthPotion = 20;
   PImage gameObjectImage;
   int health;
+  PImage potion;
 
   void draw () {
     if (fighting == false){
@@ -19,9 +20,7 @@ class Combat_System extends GameObject { //<>// //<>// //<>//
 
     if(fighting == true){
       //health potion button
-      rectMode (CENTER);
-      fill (#16DB4C);
-      rect (114, 546.0, 153, 65);
+      image(potion, 0, 0);
 
       fill (#020302);
       textSize (32);

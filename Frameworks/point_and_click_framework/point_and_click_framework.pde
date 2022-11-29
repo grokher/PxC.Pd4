@@ -1,9 +1,11 @@
+import processing.video.*;
 import processing.sound.*;
 
 int wwidth = 800;
 int wheight = 600;
 
 Combat_System combatSystem;
+Movie cutsceneKitsune;
 
 final SceneManager sceneManager = new SceneManager();
 final InventoryManager inventoryManager = new InventoryManager();
@@ -31,7 +33,10 @@ void setup()
   x = (int)random(150,600);
   y = (int)random(150,400);
   
+  combatSystem.potion = loadImage("potion.png");
   
+  cutsceneKitsune = new Movie(this, "kitsuneCutscene.mov");
+  cutsceneKitsune.loop();
  
   button1 = new SoundFile(this, "button1.wav");
   button2 = new SoundFile(this, "button2.wav");
@@ -39,7 +44,6 @@ void setup()
   punch = new SoundFile(this, "punch.wav");
   
   //start of mainMen
-  
   Scene mainMenu = new Scene("sceneMainMenu", "player.jpg");
   GameObject weaponKatana = new GameObject("weapon_scene0x", 350,150,300,500, "katana.png");
   TextObject startButton = new TextObject("startText_mainMenu",450,100,50,50,"","Start Game");
@@ -78,7 +82,7 @@ void setup()
   scene03.addGameObject(returnObject2);
   GameObject enemyKitsune = new GameObject("enemy_Kitsune01",150,150,200,200,"kitsune.png");
   scene03.addGameObject(enemyKitsune);
-  MoveToSceneObject combatSceneKitsune = new MoveToSceneObject("goToCombatSceneKitsune",300 , 150,300,250,"clickableObject.png","combatKitsune");
+  MoveToSceneObject combatSceneKitsune = new MoveToSceneObject("goToCombatSceneKitsune",150, 150,200,200,"clickableObject.png","combatKitsune");
   scene03.addGameObject(combatSceneKitsune);
   scene03.addGameObject(weaponKatana);
   
@@ -155,9 +159,11 @@ void setup()
 
 void draw()
 {
+  cutsceneKitsune.stop();
   sceneManager.getCurrentScene().draw(wwidth, wheight);
   sceneManager.getCurrentScene().updateScene();
   inventoryManager.clearMarkedForDeathCollectables();
+  //image(cutsceneKitsune, 0, 0);
 }
 
 void mouseMoved() {
@@ -166,4 +172,7 @@ void mouseMoved() {
 
 void mouseClicked() {
   sceneManager.getCurrentScene().mouseClicked();
+}
+void movieEvent(Movie m) {
+  m.read();
 }
