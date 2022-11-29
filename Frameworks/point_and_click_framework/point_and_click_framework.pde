@@ -3,7 +3,7 @@ import processing.sound.*;
 
 int wwidth = 800;
 int wheight = 600;
-PImage potion, playButton;
+PImage potion, playButton, weaponSelectionKappa, inventoryButton;
 
 Combat_System combatSystem;
 enemyMovement enemyMovement;
@@ -16,6 +16,7 @@ SoundFile button1,button2,slash, punch, punch2;
 int x;
 int y;
 
+boolean kappa, jorogumo, dragon, kitsune;
 int kappaHealth = 200;
 int kappaDamage = 10;
 int jorogumoHealth = 250;
@@ -37,9 +38,10 @@ void setup()
   
   enemyMovement = new enemyMovement();
   enemyMovement.kappa = loadImage("kappa.png");
-  
   potion = loadImage("potion.png");
   playButton = loadImage("playButton.png");
+  weaponSelectionKappa = loadImage("weaponSelectionKappa.png");
+  inventoryButton = loadImage ("inventoryButton.png");
   
   cutsceneKitsune = new Movie(this, "kitsuneCutscene.mov");
   cutsceneKitsune.loop();
@@ -52,7 +54,7 @@ void setup()
   
   //start of mainMen
   Scene mainMenu = new Scene("sceneMainMenu", "player.jpg");
-  GameObject weaponKatana = new GameObject("weapon_scene0x", 350,150,300,500, "katana.png");
+  GameObject weaponStarter = new GameObject("weapon_scene0x", 350,100,300,500, "katana.png");
   /*MoveToSceneObject startButton = new MoveToSceneObject("startText_mainMenu",450,100,50,50,"playButton.png","");
   mainMenu.addGameObject(startButton);*/
   MoveToSceneObject scene01MoveTo = new MoveToSceneObject("goToScene01_sceneMainMenu",40,140,200,125,"playButton.png","scene01");
@@ -80,7 +82,7 @@ void setup()
   scene02.addGameObject(enemyKappa);
   MoveToSceneObject combatSceneKappa = new MoveToSceneObject("goToCombatSceneKappa",150,150,300,300,"clickableObject.png","combatKappa");
   scene02.addGameObject(combatSceneKappa);
-  scene02.addGameObject(weaponKatana);
+  scene02.addGameObject(weaponStarter);
   
   //start of scene03 game screen (Kitsune)  
   
@@ -91,7 +93,7 @@ void setup()
   scene03.addGameObject(enemyKitsune);
   MoveToSceneObject combatSceneKitsune = new MoveToSceneObject("goToCombatSceneKitsune",150, 150,200,200,"clickableObject.png","combatKitsune");
   scene03.addGameObject(combatSceneKitsune);
-  scene03.addGameObject(weaponKatana);
+  scene03.addGameObject(weaponStarter);
   
   //start of scene04 game screen (Jorogumo)
   Scene scene04 = new Scene("scene04", "backJorogumo.png"); 
@@ -101,7 +103,7 @@ void setup()
   scene04.addGameObject(enemy01);
   MoveToSceneObject combatSceneJorogumo = new MoveToSceneObject("goToCombatSceneJorogumo",300 , 150,300,250,"clickableObject.png","combatJorogumo");
   scene04.addGameObject(combatSceneJorogumo);
-  scene04.addGameObject(weaponKatana);
+  scene04.addGameObject(weaponStarter);
   
   //start of scene05 game screen (boss)
   Scene scene05 = new Scene("scene06", "backBoss01.jpg");
@@ -111,7 +113,7 @@ void setup()
   scene05.addGameObject(returnObject6);
   MoveToSceneObject combatSceneDragon = new MoveToSceneObject("goToCombatSceneDragon",200,0,400,450,"clickableObject.png","combatDragon");
   scene05.addGameObject(combatSceneDragon);
-  scene05.addGameObject(weaponKatana);
+  scene05.addGameObject(weaponStarter);
   
   
   //combat scene with kappa
