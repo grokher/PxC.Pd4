@@ -1,4 +1,4 @@
-class Combat_System extends GameObject { //<>// //<>// //<>// //<>// //<>// //<>//
+class combatJorogumo extends GameObject { //<>// //<>// //<>// //<>// //<>// //<>//
   int playerHealth = 120;
   int enemyHealth = 250;
   int enemyDamage = 15;
@@ -86,18 +86,18 @@ class Combat_System extends GameObject { //<>// //<>// //<>// //<>// //<>// //<>
       potionAmmount -= 1;
     }
   }
-  public Combat_System(String identifier, int x, int y, int owidth, int oheight)
+  public combatJorogumo(String identifier, int x, int y, int owidth, int oheight)
   {
     this(identifier, x, y, owidth, oheight, "");
   }
 
-  public Combat_System(String identifier, int x, int y, int owidth, int oheight, String gameObjectImageFile)
+  public combatJorogumo(String identifier, int x, int y, int owidth, int oheight, String gameObjectImageFile)
   {
     super(identifier, x, y, owidth, oheight, gameObjectImageFile);
     this.gameObjectImage = loadImage(gameObjectImageFile);
   }
   
-  public Combat_System(String identifier, int x, int y, int owidth, int oheight, String gameObjectImageFile, int health , int damage)
+  public combatJorogumo(String identifier, int x, int y, int owidth, int oheight, String gameObjectImageFile, int health , int damage)
   {
     super(identifier,x,y,owidth,oheight,gameObjectImageFile);
     
