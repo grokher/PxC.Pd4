@@ -23,7 +23,6 @@ class combatKitsune extends GameObject { //<>// //<>// //<>// //<>// //<>// //<>
   void draw () {
     if (fighting == false & kitsuneAlive == true & dead == false){
       playerHealth = 120;
-      enemyHealth = 250;
       
       punch2.amp(0);
       punch.amp(0);
