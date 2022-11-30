@@ -55,7 +55,7 @@ class combatKappa extends GameObject { //<>// //<>// //<>// //<>// //<>// //<>//
       text (potionAmmount, 100, 569);
       
       image(kappaImage,x,y,IWidth,IHeight);
-      x = 200 + 300 * cos(millis()/1500.0f);
+      x = 250 + 270 * cos(millis()/1200.0f);
       y = 270 + 30 * sin (millis()/100.0f);
     }
     
