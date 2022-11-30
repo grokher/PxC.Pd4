@@ -6,19 +6,38 @@ class combatJorogumo extends GameObject { //<>// //<>// //<>// //<>// //<>// //<
   int potionAmmount = 3;
   int attackInterval = 1;
   int time;
-  int localTime;
+  int localTime = 0;
   boolean fighting = false;
   int healthPotion = 20;
   PImage gameObjectImage;
   int health;
   float punchSound = random (1);
   boolean jorogumoAlive = true;
+  boolean obtainedSai = false;
+  boolean dead = false;
 
   void draw () {
     println (punchSound);
     
-    if (fighting == false){
+    if (fighting == false & jorogumoAlive == true & dead == false){
       playerHealth = 120;
+      enemyHealth = 250;
+      
+      punch2.amp(0);
+      punch.amp(0);
+      
+      imageMode (CORNER);
+      image(cutsceneJorogumo, 0, 0);
+      cutsceneJorogumo.play(); 
+
+      imageMode (CENTER);
+      strokeWeight (3);
+      fill (#030202);
+      rectMode (CENTER);
+      rect (720, 40, 130, 60);
+      image(playButton, 730, 30, 500, 500);
+      
+      imageMode (CORNER);
     }
 
     if(fighting == true){
@@ -38,7 +57,9 @@ class combatJorogumo extends GameObject { //<>// //<>// //<>// //<>// //<>// //<
     
       if (enemyHealth < 1) {
         fighting = false;
-          enemyHealth = 0;
+        jorogumoAlive = false;
+        enemyHealth = 0;
+        obtainedSai = true;
       }
 
       if (playerHealth > 120) {
@@ -49,6 +70,10 @@ class combatJorogumo extends GameObject { //<>// //<>// //<>// //<>// //<>// //<
         playerHealth = 0;
         punch2.amp(0);
         punch.amp(0);
+        
+        fighting = false;
+        dead = true;
+        image (gameOver, 0, 0);
       }
 
       time = millis()/2000;
@@ -79,12 +104,15 @@ class combatJorogumo extends GameObject { //<>// //<>// //<>// //<>// //<>// //<
   void mouseClicked () {
     if (mouseIsHovering & playerHealth > 0) {
       enemyHealth -= weaponDamage;
-      fighting = true;
       println("reaching the enemy damage");
     }
     if (mouseX > 22 & mouseX < 136 & mouseY > 467 & mouseY < 581 & potionAmmount > 0 & playerHealth > 0) {
       playerHealth += healthPotion;
       potionAmmount -= 1;
+    }
+            if (fighting == false & mouseX < 785 & mouseX > 654 & mouseY < 69 & mouseY > 9){
+      fighting = true;
+      cutsceneJorogumo.stop();
     }
   }
   public combatJorogumo(String identifier, int x, int y, int owidth, int oheight)

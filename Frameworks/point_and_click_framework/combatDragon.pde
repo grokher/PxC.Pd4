@@ -12,12 +12,16 @@ class combatDragon extends GameObject { //<>// //<>// //<>// //<>// //<>// //<>/
   PImage gameObjectImage;
   int health;
   float punchSound = random (1);
+  boolean gameBeat = false;
 
   void draw () {
     println (punchSound);
     
     if (fighting == false){
       playerHealth = 120;
+      
+      punch2.amp(0);
+      punch.amp(0);
     }
 
     if(fighting == true){
@@ -38,6 +42,7 @@ class combatDragon extends GameObject { //<>// //<>// //<>// //<>// //<>// //<>/
       if (enemyHealth < 1) {
         fighting = false;
           enemyHealth = 0;
+          gameBeat = true;
       }
 
       if (playerHealth > 120) {

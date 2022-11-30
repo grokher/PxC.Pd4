@@ -13,10 +13,16 @@ class combatKitsune extends GameObject { //<>// //<>// //<>// //<>// //<>// //<>
   int health;
   float punchSound = random (1);
   boolean kitsuneAlive = true;
+  boolean obtainedKatana = false;
+  boolean dead = false;
 
   void draw () {
-    if (fighting == false & kitsuneAlive == true){
+    if (fighting == false & kitsuneAlive == true & dead == false){
       playerHealth = 120;
+      enemyHealth = 250;
+      
+      punch2.amp(0);
+      punch.amp(0);
       
       imageMode (CORNER);
       image(cutsceneKitsune, 0, 0);
@@ -24,10 +30,10 @@ class combatKitsune extends GameObject { //<>// //<>// //<>// //<>// //<>// //<>
       
       imageMode (CENTER);
       strokeWeight (3);
-      fill (#FFFFFC);
+      fill (#030202);
       rectMode (CENTER);
       rect (720, 40, 130, 60);
-      image(skipButton, 700, 20);
+      image(playButton, 730, 30, 500, 500);
       
       imageMode (CORNER);
     }
@@ -51,6 +57,7 @@ class combatKitsune extends GameObject { //<>// //<>// //<>// //<>// //<>// //<>
         fighting = false;
           enemyHealth = 0;
           kitsuneAlive = false;
+          obtainedKatana = true;
       }
 
       if (playerHealth > 120) {
@@ -61,6 +68,10 @@ class combatKitsune extends GameObject { //<>// //<>// //<>// //<>// //<>// //<>
         playerHealth = 0;
         punch2.amp(0);
         punch.amp(0);
+        
+        dead = true;
+        fighting = false;
+        image (gameOver, 0, 0);
       }
 
       time = millis()/2000;
