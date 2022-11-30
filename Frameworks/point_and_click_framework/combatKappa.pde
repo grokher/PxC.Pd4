@@ -15,6 +15,11 @@ class combatKappa extends GameObject { //<>// //<>// //<>// //<>// //<>// //<>//
   boolean kappaAlive = true;
   boolean obtainedBow = true;
   boolean dead = false;
+  float x = 200;
+  float y = 200;
+  float IWidth = 300;
+  float IHeight = 220;
+
 
   void draw () {
     println (punchSound);
@@ -24,6 +29,15 @@ class combatKappa extends GameObject { //<>// //<>// //<>// //<>// //<>// //<>//
       
       punch2.amp(0);
       punch.amp(0);
+      
+      imageMode (CENTER);
+      strokeWeight (3);
+      fill (#030202);
+      rectMode (CENTER);
+      rect (720, 40, 130, 60);
+      image(playButton, 730, 30, 500, 500);
+      
+      imageMode (CORNER);
     }
 
     if(fighting == true){
@@ -39,6 +53,10 @@ class combatKappa extends GameObject { //<>// //<>// //<>// //<>// //<>// //<>//
       text ("player " + playerHealth, 621, 56);
 
       text (potionAmmount, 100, 569);
+      
+      image(kappaImage,x,y,IWidth,IHeight);
+      x = 200 + 300 * cos(millis()/1500.0f);
+      y = 270 + 30 * sin (millis()/100.0f);
     }
     
       if (enemyHealth < 1) {
@@ -89,15 +107,19 @@ class combatKappa extends GameObject { //<>// //<>// //<>// //<>// //<>// //<>//
   }
 
   void mouseClicked () {
-    if (mouseIsHovering & playerHealth > 0) {
-      fighting = true;
+  if (mouseX > x && mouseX < x + IWidth && mouseY > y && mouseY < y + IHeight && playerHealth > 0) {
       enemyHealth -= weaponDamage;
+      fighting = true;
       println("reaching the enemy damage");
     }
     if (mouseX > 22 & mouseX < 136 & mouseY > 467 & mouseY < 581 & potionAmmount > 0 & playerHealth > 0) {
       playerHealth += healthPotion;
       potionAmmount -= 1;
     }
+        if (fighting == false & mouseX < 785 & mouseX > 654 & mouseY < 69 & mouseY > 9) {
+      fighting = true;
+      cutsceneJorogumo.stop();
+        }
   }
   public combatKappa(String identifier, int x, int y, int owidth, int oheight)
   {

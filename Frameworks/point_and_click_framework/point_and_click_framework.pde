@@ -3,7 +3,7 @@ import processing.sound.*;
 
 int wwidth = 800;
 int wheight = 600;
-PImage potion, playButton, inventoryButton, skipButton, gameOver, jorogumoImage, kitsuneImage;
+PImage potion, playButton, inventoryButton, skipButton, gameOver, jorogumoImage, kitsuneImage, kappaImage;
 
 //Combat_System combatSystem;
 enemyMovement enemyMovement;
@@ -46,6 +46,7 @@ void setup()
   gameOver = loadImage ("gameOver.png");
   jorogumoImage = loadImage("jorogumo.png");
   kitsuneImage = loadImage("kitsune.png");
+  kappaImage = loadImage("kappa.png");
   
   cutsceneKitsune = new Movie(this, "kitsuneCutscene.mov");
   cutsceneJorogumo = new Movie(this, "jorogumoCutscene.mov");
@@ -122,13 +123,12 @@ void setup()
   
   //combat scene with kappa
   Scene sceneCombatKappa = new Scene("combatKappa","backKappa.jpg");
-  
-  combatKappa kappa = new combatKappa("hitbox_Kappa",enemyMovement.kappaX,y,200,200,"kappa.png",kappaHealth, kappaDamage);
+  combatKappa kappa = new combatKappa("hitbox_Kappa",enemyMovement.kappaX,y,2000,2000,"kappa.png",kappaHealth, kappaDamage);
   sceneCombatKappa.addGameObject(kappa);
-  GameObject hitboxKappa = new GameObject("Kappa",enemyMovement.kappaX,y,200,200,"kappa.png");
-  sceneCombatKappa.addGameObject(hitboxKappa);
+  //GameObject hitboxKappa = new GameObject("Kappa",enemyMovement.kappaX,y,2000,2000,"kappa.png");
+  //sceneCombatKappa.addGameObject(hitboxKappa);
   MoveToSceneObject returnObject5 = new MoveToSceneObject("goBack_scene02",350,500,100,100,"arrowDownDark.png", true);
-  sceneCombatKappa.addGameObject(returnObject5);
+  //sceneCombatKappa.addGameObject(returnObject5);
   
   //combat scene with kitsune
   //GameObject kitsune = new GameObject("kitsune",x,y,200,200,"kitsune.png");

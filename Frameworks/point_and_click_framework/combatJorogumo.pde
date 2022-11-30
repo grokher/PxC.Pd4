@@ -45,7 +45,6 @@ class combatJorogumo extends GameObject { //<>// //<>// //<>// //<>// //<>// //<
       rect (720, 40, 130, 60);
       image(playButton, 730, 30, 500, 500);
       
-      
       imageMode (CORNER);
     }
     if (fighting == true) {
