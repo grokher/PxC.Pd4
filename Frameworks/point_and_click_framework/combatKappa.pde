@@ -23,24 +23,24 @@ class combatKappa extends GameObject { //<>// //<>// //<>// //<>// //<>// //<>//
 
   void draw () {
     println (punchSound);
-    
-    if (fighting == false & kappaAlive == true){
+
+    if (fighting == false & kappaAlive == true) {
       playerHealth = 120;
-      
+
       punch2.amp(0);
       punch.amp(0);
-      
+
       imageMode (CENTER);
       strokeWeight (3);
       fill (#030202);
       rectMode (CENTER);
       rect (720, 40, 130, 60);
       image(playButton, 730, 30, 500, 500);
-      
+
       imageMode (CORNER);
     }
 
-    if(fighting == true){
+    if (fighting == true) {
       //health potion button
       image(potion, 0, 446);
 
@@ -53,66 +53,67 @@ class combatKappa extends GameObject { //<>// //<>// //<>// //<>// //<>// //<>//
       text ("player " + playerHealth, 621, 56);
 
       text (potionAmmount, 100, 569);
-      
-      image(kappaImage,x,y,IWidth,IHeight);
+
+      image(kappaImage, x, y, IWidth, IHeight);
       x = 250 + 270 * cos(millis()/1200.0f);
       y = 270 + 30 * sin (millis()/100.0f);
     }
-    
-      if (enemyHealth < 1) {
-          fighting = false;
-          enemyHealth = 0;
-          kappaAlive = false;
-          obtainedBow = true;
-          
-          imageMode (CENTER);
-          image(bowObtained, 400, 300);
-          imageMode (CORNER);
-      }
 
-      if (playerHealth > 120) {
-        playerHealth = 120;
-      }
+    if (enemyHealth < 1) {
+      fighting = false;
+      enemyHealth = 0;
+      kappaAlive = false;
+      obtainedBow = true;
 
-      if (playerHealth < 1) {
-        playerHealth = 0;
-        punch2.amp(0);
-        punch.amp(0);
-        
-        fighting = false;
-        dead = true;
-        
-        image (gameOver, 0, 0);
-        exit();
-      }
+      imageMode (CENTER);
+      image(bowObtained, 400, 300);
+      imageMode (CORNER);
+      image(backButton, width / 2 - 50, 500, 100, 100);
+    }
 
-      time = millis()/2000;
+    if (playerHealth > 120) {
+      playerHealth = 120;
+    }
 
-      if (time - attackInterval >= 1 && enemyHealth > 0){
-        println("reaching the player damage");
-        playerHealth -= enemyDamage;
-        punchSound = random (1);
-        
-        if (punchSound > 0.5 & playerHealth >0){
+    if (playerHealth < 1) {
+      playerHealth = 0;
+      punch2.amp(0);
+      punch.amp(0);
+
+      fighting = false;
+      dead = true;
+
+      image (gameOver, 0, 0);
+      exit();
+    }
+
+    time = millis()/2000;
+
+    if (time - attackInterval >= 1 && enemyHealth > 0) {
+      println("reaching the player damage");
+      playerHealth -= enemyDamage;
+      punchSound = random (1);
+
+      if (punchSound > 0.5 & playerHealth >0) {
         punch.play();
         punch.amp(0.5);
-        }
-        
-        if (punchSound < 0.5 & playerHealth >0){
+      }
+
+      if (punchSound < 0.5 & playerHealth >0) {
         punch2.play();
         punch2.amp(0.5);
-        }
-        
-        attackInterval++;
       }
-      
-      if (fighting == false){
-        punch.stop();
-      }
+
+      attackInterval++;
+    }
+
+    if (fighting == false) {
+      punch.stop();
+    }
   }
 
   void mouseClicked () {
-  if (mouseX > x && mouseX < x + IWidth && mouseY > y && mouseY < y + IHeight && playerHealth > 0) {
+    if (mouseX > x && mouseX < x + IWidth && mouseY > y && mouseY < y + IHeight && playerHealth > 0) {
       enemyHealth -= weaponDamage;
       fighting = true;
       println("reaching the enemy damage");
@@ -121,10 +122,14 @@ class combatKappa extends GameObject { //<>// //<>// //<>// //<>// //<>// //<>//
       playerHealth += healthPotion;
       potionAmmount -= 1;
     }
-        if (fighting == false & mouseX < 785 & mouseX > 654 & mouseY < 69 & mouseY > 9) {
+    if (fighting == false & mouseX < 785 & mouseX > 654 & mouseY < 69 & mouseY > 9) {
       fighting = true;
       cutsceneJorogumo.stop();
-        }
+    }
+    if (fighting == false && mouseX < 450 && mouseX > 350 && mouseY > 500 && mouseY < 600)
+    {
+      sceneManager.goToPreviousScene();
+    }
   }
   public combatKappa(String identifier, int x, int y, int owidth, int oheight)
   {
@@ -136,11 +141,11 @@ class combatKappa extends GameObject { //<>// //<>// //<>// //<>// //<>// //<>//
     super(identifier, x, y, owidth, oheight, gameObjectImageFile);
     this.gameObjectImage = loadImage(gameObjectImageFile);
   }
-  
-  public combatKappa(String identifier, int x, int y, int owidth, int oheight, String gameObjectImageFile, int health , int damage)
+
+  public combatKappa(String identifier, int x, int y, int owidth, int oheight, String gameObjectImageFile, int health, int damage)
   {
-    super(identifier,x,y,owidth,oheight,gameObjectImageFile);
-    
+    super(identifier, x, y, owidth, oheight, gameObjectImageFile);
+
     this.enemyHealth = health;
     this.enemyDamage = damage;
   }

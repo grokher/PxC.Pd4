@@ -43,7 +43,7 @@ class combatJorogumo extends GameObject { //<>// //<>// //<>// //<>// //<>// //<
       rectMode (CENTER);
       rect (720, 40, 130, 60);
       image(playButton, 730, 30, 500, 500);
-      
+
       imageMode (CORNER);
     }
     if (fighting == true) {
@@ -57,10 +57,10 @@ class combatJorogumo extends GameObject { //<>// //<>// //<>// //<>// //<>// //<
       fill (#020302);
       textSize (32);
       text ("player " + playerHealth, 621, 56);
-      
+
       text (potionAmmount, 100, 569);
-      
-      image(jorogumoImage,x,y,IWidth,IHeight);
+
+      image(jorogumoImage, x, y, IWidth, IHeight);
       x = 350 + 150 * cos(millis()/500.0f);
       y = 200 + 200 * sin (millis()/1050.0f);
       println(y);
@@ -71,10 +71,11 @@ class combatJorogumo extends GameObject { //<>// //<>// //<>// //<>// //<>// //<
       jorogumoAlive = false;
       enemyHealth = 0;
       obtainedSai = true;
-      
+
       imageMode (CENTER);
       image(saiObtained, 400, 300);
       imageMode (CORNER);
+      image(backButton, width / 2 - 50, 500, 100, 100);
     }
 
     if (playerHealth > 120) {
@@ -129,6 +130,10 @@ class combatJorogumo extends GameObject { //<>// //<>// //<>// //<>// //<>// //<
     if (fighting == false & mouseX < 785 & mouseX > 654 & mouseY < 69 & mouseY > 9) {
       fighting = true;
       cutsceneJorogumo.stop();
+    }
+    if (fighting == false && mouseX < 450 && mouseX > 350 && mouseY > 500 && mouseY < 600)
+    {
+      sceneManager.goToPreviousScene();
     }
   }
   public combatJorogumo(String identifier, int x, int y, int owidth, int oheight)

@@ -21,27 +21,27 @@ class combatKitsune extends GameObject { //<>// //<>// //<>// //<>// //<>// //<>
   float y = 200;
 
   void draw () {
-    if (fighting == false & kitsuneAlive == true & dead == false){
+    if (fighting == false & kitsuneAlive == true & dead == false) {
       playerHealth = 120;
-      
+
       punch2.amp(0);
       punch.amp(0);
-      
+
       imageMode (CORNER);
       image(cutsceneKitsune, 0, 0);
       cutsceneKitsune.play();
-      
+
       imageMode (CENTER);
       strokeWeight (3);
       fill (#030202);
       rectMode (CENTER);
       rect (720, 40, 130, 60);
       image(playButton, 730, 30, 500, 500);
-      
+
       imageMode (CORNER);
     }
 
-    if(fighting == true){
+    if (fighting == true) {
       //health potion button
       image(potion, 0, 446);
 
@@ -54,67 +54,68 @@ class combatKitsune extends GameObject { //<>// //<>// //<>// //<>// //<>// //<>
       text ("player " + playerHealth, 621, 56);
 
       text (potionAmmount, 100, 569);
-      
-      image(kitsuneImage,x,y,IWidth,IHeight);
+
+      image(kitsuneImage, x, y, IWidth, IHeight);
       x = 350 + 200 * cos(millis()/200.0f);
       y = 200 + 200 * sin (millis()/650.0f);
       println(y);
     }
-    
-      if (enemyHealth < 1) {
-        fighting = false;
-          enemyHealth = 0;
-          kitsuneAlive = false;
-          obtainedKatana = true;
-          
-          imageMode (CENTER);
-          image(katanaObtained, 400, 300);
-          imageMode (CORNER);
-      }
 
-      if (playerHealth > 120) {
-        playerHealth = 120;
-      }
+    if (enemyHealth < 1) {
+      fighting = false;
+      enemyHealth = 0;
+      kitsuneAlive = false;
+      obtainedKatana = true;
 
-      if (playerHealth < 1) {
-        playerHealth = 0;
-        punch2.amp(0);
-        punch.amp(0);
-        
-        dead = true;
-        fighting = false;
-        image (gameOver, 0, 0);
-        exit();
-      }
+      imageMode (CENTER);
+      image(katanaObtained, 400, 300);
+      imageMode (CORNER);
+      image(backButton, width / 2 - 50, 500, 100, 100);
+    }
 
-      time = millis()/2000;
+    if (playerHealth > 120) {
+      playerHealth = 120;
+    }
 
-      if (time - attackInterval >= 1 && enemyHealth > 0){
-        println("reaching the player damage");
-        playerHealth -= enemyDamage;
-        punchSound = random (1);
-        
-        if (punchSound > 0.5 & playerHealth >0){
+    if (playerHealth < 1) {
+      playerHealth = 0;
+      punch2.amp(0);
+      punch.amp(0);
+
+      dead = true;
+      fighting = false;
+      image (gameOver, 0, 0);
+      exit();
+    }
+
+    time = millis()/2000;
+
+    if (time - attackInterval >= 1 && enemyHealth > 0) {
+      println("reaching the player damage");
+      playerHealth -= enemyDamage;
+      punchSound = random (1);
+
+      if (punchSound > 0.5 & playerHealth >0) {
         punch.play();
         punch.amp(0.5);
-        }
-        
-        if (punchSound < 0.5 & playerHealth >0){
+      }
+
+      if (punchSound < 0.5 & playerHealth >0) {
         punch2.play();
         punch2.amp(0.5);
-        }
-        
-        attackInterval++;
       }
-      
-      if (fighting == false){
-        punch.stop();
-        punch2.stop();
-      }
+
+      attackInterval++;
+    }
+
+    if (fighting == false) {
+      punch.stop();
+      punch2.stop();
+    }
   }
 
   void mouseClicked () {
-      if (mouseX > x && mouseX < x + IWidth && mouseY > y && mouseY < y + IHeight && playerHealth > 0) {
+    if (mouseX > x && mouseX < x + IWidth && mouseY > y && mouseY < y + IHeight && playerHealth > 0) {
       enemyHealth -= weaponDamage;
       println("reaching the enemy damage");
     }
@@ -122,9 +123,13 @@ class combatKitsune extends GameObject { //<>// //<>// //<>// //<>// //<>// //<>
       playerHealth += healthPotion;
       potionAmmount -= 1;
     }
-    if (fighting == false & mouseX < 785 & mouseX > 654 & mouseY < 69 & mouseY > 9){
+    if (fighting == false & mouseX < 785 & mouseX > 654 & mouseY < 69 & mouseY > 9) {
       fighting = true;
       cutsceneKitsune.stop();
+    }
+    if (fighting == false && mouseX < 450 && mouseX > 350 && mouseY > 500 && mouseY < 600)
+    {
+      sceneManager.goToPreviousScene();
     }
   }
   public combatKitsune (String identifier, int x, int y, int owidth, int oheight)
@@ -137,11 +142,11 @@ class combatKitsune extends GameObject { //<>// //<>// //<>// //<>// //<>// //<>
     super(identifier, x, y, owidth, oheight, gameObjectImageFile);
     this.gameObjectImage = loadImage(gameObjectImageFile);
   }
-  
-  public combatKitsune(String identifier, int x, int y, int owidth, int oheight, String gameObjectImageFile, int health , int damage)
+
+  public combatKitsune(String identifier, int x, int y, int owidth, int oheight, String gameObjectImageFile, int health, int damage)
   {
-    super(identifier,x,y,owidth,oheight,gameObjectImageFile);
-    
+    super(identifier, x, y, owidth, oheight, gameObjectImageFile);
+
     this.enemyHealth = health;
     this.enemyDamage = damage;
   }
