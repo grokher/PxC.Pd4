@@ -7,7 +7,7 @@ PImage potion, playButton, weaponSelectionKappa, inventoryButton, skipButton;
 
 //Combat_System combatSystem;
 enemyMovement enemyMovement;
-Movie cutsceneKitsune;
+Movie cutsceneKitsune, cutsceneJorogumo;
 
 final SceneManager sceneManager = new SceneManager();
 final InventoryManager inventoryManager = new InventoryManager();
@@ -45,6 +45,7 @@ void setup()
   skipButton = loadImage ("skipButton.png");
   
   cutsceneKitsune = new Movie(this, "kitsuneCutscene.mov");
+  cutsceneJorogumo = new Movie(this, "jorogumoCutscene.mov");
  
   button1 = new SoundFile(this, "button1.wav");
   button2 = new SoundFile(this, "button2.wav");
@@ -96,7 +97,7 @@ void setup()
   scene03.addGameObject(weaponStarter);
   
   //start of scene04 game screen (Jorogumo)
-  Scene scene04 = new Scene("scene04", "backJorogumo.png"); 
+  Scene scene04 = new Scene("scene04", "backJorogumo.jpg"); 
   MoveToSceneObject returnObject3 = new MoveToSceneObject("goBack_scene04",350,500,100,100,"arrowDownDark.png", true);
   scene04.addGameObject(returnObject3);
   GameObject enemy01 = new GameObject("enemy_Jorogumo01", 300,150,350,250, "jorogumo.png"); 
@@ -106,7 +107,7 @@ void setup()
   scene04.addGameObject(weaponStarter);
   
   //start of scene05 game screen (boss)
-  Scene scene05 = new Scene("scene06", "backBoss01.jpg");
+  Scene scene05 = new Scene("scene06", "backDragon.jpg");
   GameObject enemyDragon = new GameObject("enemy_Dragon01",75,0,550,450, "dragon01.png");
   scene05.addGameObject(enemyDragon);
   MoveToSceneObject returnObject6 = new MoveToSceneObject("goback_scene05",350,500,100,100,"arrowDownDark.png", true);
@@ -136,7 +137,7 @@ void setup()
   //add kitsune image and combat in here
   
   //combat scene with Jorogumo
-  Scene sceneCombatJorogumo = new Scene("combatJorogumo", "backJorogumo.png");
+  Scene sceneCombatJorogumo = new Scene("combatJorogumo", "backJorogumo.jpg");
   combatJorogumo hitboxJorogumo = new combatJorogumo("Jorogumo", x , y ,200,200, "jorogumo.png", jorogumoHealth, jorogumoDamage);
   sceneCombatJorogumo.addGameObject(hitboxJorogumo);
   GameObject jorogumo = new GameObject("enemy_Jorogumo01",x , y ,200,200, "jorogumo.png"); 
@@ -146,7 +147,7 @@ void setup()
   sceneCombatJorogumo.addGameObject(returnObject5);
   
   //combat scene with dragon
-  Scene sceneCombatDragon = new Scene("combatDragon","tempBack.jpg"); // need finished? background
+  Scene sceneCombatDragon = new Scene("combatDragon","backDragon.jpg"); // need finished? background
   combatDragon hitboxDragon = new combatDragon("hitbox_dragon",75,0,550,500,"dragon01.png", dragonHealth, dragonDamage);
   sceneCombatDragon.addGameObject(hitboxDragon);
   GameObject dragon = new GameObject("dragon",75,0,550,500,"dragon01.png");

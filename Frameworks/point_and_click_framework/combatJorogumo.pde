@@ -12,6 +12,7 @@ class combatJorogumo extends GameObject { //<>// //<>// //<>// //<>// //<>// //<
   PImage gameObjectImage;
   int health;
   float punchSound = random (1);
+  boolean jorogumoAlive = true;
 
   void draw () {
     println (punchSound);
