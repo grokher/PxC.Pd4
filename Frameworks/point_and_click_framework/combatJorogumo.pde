@@ -1,4 +1,4 @@
-class combatJorogumo extends GameObject { //<>// //<>// //<>// //<>// //<>// //<>//
+class combatJorogumo extends GameObject { //<>// //<>// //<>// //<>// //<>// //<>// //<>//
   int playerHealth = 120;
   int enemyHealth = 250;
   int enemyDamage = 15;
@@ -87,6 +87,7 @@ class combatJorogumo extends GameObject { //<>// //<>// //<>// //<>// //<>// //<
       fighting = false;
       dead = true;
       image (gameOver, 0, 0);
+      exit ();
     }
 
     time = millis()/2000;

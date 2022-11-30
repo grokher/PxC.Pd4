@@ -3,7 +3,7 @@ import processing.sound.*;
 
 int wwidth = 800;
 int wheight = 600;
-PImage potion, playButton, inventoryButton, skipButton, gameOver, jorogumoImage,jorogumoHitboxImage;
+PImage potion, playButton, inventoryButton, skipButton, gameOver, jorogumoImage, kitsuneImage;
 
 //Combat_System combatSystem;
 enemyMovement enemyMovement;
@@ -45,6 +45,7 @@ void setup()
   skipButton = loadImage ("skipButton.png");
   gameOver = loadImage ("gameOver.png");
   jorogumoImage = loadImage("jorogumo.png");
+  kitsuneImage = loadImage("kitsune.png");
   
   cutsceneKitsune = new Movie(this, "kitsuneCutscene.mov");
   cutsceneJorogumo = new Movie(this, "jorogumoCutscene.mov");
@@ -130,12 +131,12 @@ void setup()
   sceneCombatKappa.addGameObject(returnObject5);
   
   //combat scene with kitsune
-  GameObject kitsune = new GameObject("kitsune",x,y,200,200,"kitsune.png");
-  combatKitsune hitboxKitsune = new combatKitsune("hitboxKitsune",x,y,200,200,"kitsune.png",kitsuneHealth,kitsuneDamage);
+  //GameObject kitsune = new GameObject("kitsune",x,y,200,200,"kitsune.png");
+  combatKitsune hitboxKitsune = new combatKitsune("hitboxKitsune",2000,2000,200,200,"kitsune.png",kitsuneHealth,kitsuneDamage);
   Scene sceneCombatKitsune = new Scene("combatKitsune","backKitsune01.jpg");
   sceneCombatKitsune.addGameObject(hitboxKitsune);
-  sceneCombatKitsune.addGameObject(kitsune);
-  sceneCombatKitsune.addGameObject(returnObject5);
+  //sceneCombatKitsune.addGameObject(kitsune);
+  //sceneCombatKitsune.addGameObject(returnObject5);
   //add kitsune image and combat in here
   
   //combat scene with Jorogumo

@@ -15,6 +15,10 @@ class combatKitsune extends GameObject { //<>// //<>// //<>// //<>// //<>// //<>
   boolean kitsuneAlive = true;
   boolean obtainedKatana = false;
   boolean dead = false;
+  float IHeight = 200;
+  float IWidth = 200;
+  float x = 200;
+  float y = 200;
 
   void draw () {
     if (fighting == false & kitsuneAlive == true & dead == false){
@@ -51,6 +55,11 @@ class combatKitsune extends GameObject { //<>// //<>// //<>// //<>// //<>// //<>
       text ("player " + playerHealth, 621, 56);
 
       text (potionAmmount, 100, 569);
+      
+      image(kitsuneImage,x,y,IWidth,IHeight);
+      x = 350 + 200 * cos(millis()/200.0f);
+      y = 200 + 200 * sin (millis()/650.0f);
+      println(y);
     }
     
       if (enemyHealth < 1) {
@@ -102,7 +111,7 @@ class combatKitsune extends GameObject { //<>// //<>// //<>// //<>// //<>// //<>
   }
 
   void mouseClicked () {
-    if (mouseIsHovering & playerHealth > 0) {
+      if (mouseX > x && mouseX < x + IWidth && mouseY > y && mouseY < y + IHeight && playerHealth > 0) {
       enemyHealth -= weaponDamage;
       println("reaching the enemy damage");
     }
