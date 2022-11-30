@@ -67,6 +67,10 @@ class combatKitsune extends GameObject { //<>// //<>// //<>// //<>// //<>// //<>
           enemyHealth = 0;
           kitsuneAlive = false;
           obtainedKatana = true;
+          
+          imageMode (CENTER);
+          image(katanaObtained, 400, 300);
+          imageMode (CORNER);
       }
 
       if (playerHealth > 120) {

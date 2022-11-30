@@ -3,7 +3,7 @@ import processing.sound.*;
 
 int wwidth = 800;
 int wheight = 600;
-PImage potion, playButton, inventoryButton, skipButton, gameOver, jorogumoImage, kitsuneImage, kappaImage;
+PImage potion, playButton, inventoryButton, skipButton, gameOver, jorogumoImage, kitsuneImage, kappaImage, bowObtained, katanaObtained, saiObtained;
 
 //Combat_System combatSystem;
 enemyMovement enemyMovement;
@@ -47,6 +47,9 @@ void setup()
   jorogumoImage = loadImage("jorogumo.png");
   kitsuneImage = loadImage("kitsune.png");
   kappaImage = loadImage("kappa.png");
+  bowObtained = loadImage("obtainedBow.png");
+  katanaObtained = loadImage("obtainedKatana.png");
+  saiObtained = loadImage("obtainedSai.png");
   
   cutsceneKitsune = new Movie(this, "kitsuneCutscene.mov");
   cutsceneJorogumo = new Movie(this, "jorogumoCutscene.mov");

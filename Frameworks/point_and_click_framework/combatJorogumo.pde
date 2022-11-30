@@ -72,6 +72,10 @@ class combatJorogumo extends GameObject { //<>// //<>// //<>// //<>// //<>// //<
       jorogumoAlive = false;
       enemyHealth = 0;
       obtainedSai = true;
+      
+      imageMode (CENTER);
+      image(saiObtained, 400, 300);
+      imageMode (CORNER);
     }
 
     if (playerHealth > 120) {

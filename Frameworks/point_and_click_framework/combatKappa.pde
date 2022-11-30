@@ -24,7 +24,7 @@ class combatKappa extends GameObject { //<>// //<>// //<>// //<>// //<>// //<>//
   void draw () {
     println (punchSound);
     
-    if (fighting == false){
+    if (fighting == false & kappaAlive == true){
       playerHealth = 120;
       
       punch2.amp(0);
@@ -62,7 +62,12 @@ class combatKappa extends GameObject { //<>// //<>// //<>// //<>// //<>// //<>//
       if (enemyHealth < 1) {
           fighting = false;
           enemyHealth = 0;
+          kappaAlive = false;
           obtainedBow = true;
+          
+          imageMode (CENTER);
+          image(bowObtained, 400, 300);
+          imageMode (CORNER);
       }
 
       if (playerHealth > 120) {
