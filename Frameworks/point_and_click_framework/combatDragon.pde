@@ -13,6 +13,7 @@ class combatDragon extends GameObject { //<>// //<>// //<>// //<>// //<>// //<>/
   int health;
   float punchSound = random (1);
   boolean gameBeat = false;
+  boolean dead = false;
 
   void draw () {
     println (punchSound);
@@ -53,6 +54,12 @@ class combatDragon extends GameObject { //<>// //<>// //<>// //<>// //<>// //<>/
         playerHealth = 0;
         punch2.amp(0);
         punch.amp(0);
+        
+        fighting = false;
+        dead = true;
+        
+        image (gameOver, 0, 0);
+        exit();
       }
 
       time = millis()/2000;

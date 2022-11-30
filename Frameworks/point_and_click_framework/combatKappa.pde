@@ -14,6 +14,7 @@ class combatKappa extends GameObject { //<>// //<>// //<>// //<>// //<>// //<>//
   float punchSound = random (1);
   boolean kappaAlive = true;
   boolean obtainedBow = true;
+  boolean dead = false;
 
   void draw () {
     println (punchSound);
@@ -54,6 +55,12 @@ class combatKappa extends GameObject { //<>// //<>// //<>// //<>// //<>// //<>//
         playerHealth = 0;
         punch2.amp(0);
         punch.amp(0);
+        
+        fighting = false;
+        dead = true;
+        
+        image (gameOver, 0, 0);
+        exit();
       }
 
       time = millis()/2000;
@@ -83,6 +90,7 @@ class combatKappa extends GameObject { //<>// //<>// //<>// //<>// //<>// //<>//
 
   void mouseClicked () {
     if (mouseIsHovering & playerHealth > 0) {
+      fighting = true;
       enemyHealth -= weaponDamage;
       println("reaching the enemy damage");
     }

@@ -72,6 +72,7 @@ class combatKitsune extends GameObject { //<>// //<>// //<>// //<>// //<>// //<>
         dead = true;
         fighting = false;
         image (gameOver, 0, 0);
+        exit();
       }
 
       time = millis()/2000;
