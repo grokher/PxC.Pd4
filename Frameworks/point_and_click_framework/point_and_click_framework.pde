@@ -3,7 +3,7 @@ import processing.sound.*;
 
 int wwidth = 800;
 int wheight = 600;
-PImage potion, playButton, inventoryButton, skipButton, gameOver;
+PImage potion, playButton, inventoryButton, skipButton, gameOver, jorogumoImage,jorogumoHitboxImage;
 
 //Combat_System combatSystem;
 enemyMovement enemyMovement;
@@ -33,8 +33,9 @@ void settings()
 
 void setup()
 {
-  x = (int)random(150,600);
-  y = (int)random(150,400);
+  frameRate(60);
+  x = 350;
+  y = 250;
   
   enemyMovement = new enemyMovement();
   enemyMovement.kappa = loadImage("kappa.png");
@@ -43,6 +44,7 @@ void setup()
   inventoryButton = loadImage ("inventoryButton.png");
   skipButton = loadImage ("skipButton.png");
   gameOver = loadImage ("gameOver.png");
+  jorogumoImage = loadImage("jorogumo.png");
   
   cutsceneKitsune = new Movie(this, "kitsuneCutscene.mov");
   cutsceneJorogumo = new Movie(this, "jorogumoCutscene.mov");
@@ -138,13 +140,13 @@ void setup()
   
   //combat scene with Jorogumo
   Scene sceneCombatJorogumo = new Scene("combatJorogumo", "backJorogumo.jpg");
-  combatJorogumo hitboxJorogumo = new combatJorogumo("Jorogumo", x , y ,200,200, "jorogumo.png", jorogumoHealth, jorogumoDamage);
+  combatJorogumo hitboxJorogumo = new combatJorogumo("Jorogumo", 800 , 800 ,200,200, "jorogumo.png", jorogumoHealth, jorogumoDamage);
   sceneCombatJorogumo.addGameObject(hitboxJorogumo);
-  GameObject jorogumo = new GameObject("enemy_Jorogumo01",x , y ,200,200, "jorogumo.png"); 
-  sceneCombatJorogumo.addGameObject(jorogumo);
+  //GameObject jorogumo = new GameObject("enemy_Jorogumo01",x , y ,200,200, "jorogumo.png"); 
+  //sceneCombatJorogumo.addGameObject(jorogumo);
   //MoveToSceneObject returnObject7 = new MoveToSceneObject("goBack_scene04",350,500,100,100,"arrowDownDark.png", true);
   //sceneCombatJorogumo.addGameObject(returnObject7);
-  sceneCombatJorogumo.addGameObject(returnObject5);
+  //sceneCombatJorogumo.addGameObject(returnObject5);
   
   //combat scene with dragon
   Scene sceneCombatDragon = new Scene("combatDragon","backDragon.jpg"); // need finished? background

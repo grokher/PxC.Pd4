@@ -15,17 +15,25 @@ class combatJorogumo extends GameObject { //<>// //<>// //<>// //<>// //<>// //<
   boolean jorogumoAlive = true;
   boolean obtainedSai = false;
   boolean dead = false;
+  float x = 200;
+  float y = 200;
+  float IWidth = 300;
+  float IHeight = 200;
+
+  void setup()
+  {
+  }
 
   void draw () {
     println (punchSound);
-    
-    if (fighting == false & jorogumoAlive == true & dead == false){
+
+    if (fighting == false & jorogumoAlive == true & dead == false) {
       playerHealth = 120;
       enemyHealth = 250;
-      
+
       punch2.amp(0);
       punch.amp(0);
-      
+
       imageMode (CORNER);
       image(cutsceneJorogumo, 0, 0);
       cutsceneJorogumo.play(); 
@@ -37,10 +45,10 @@ class combatJorogumo extends GameObject { //<>// //<>// //<>// //<>// //<>// //<
       rect (720, 40, 130, 60);
       image(playButton, 730, 30, 500, 500);
       
+      
       imageMode (CORNER);
     }
-
-    if(fighting == true){
+    if (fighting == true) {
       //health potion button
       image(potion, 0, 446);
 
@@ -51,58 +59,63 @@ class combatJorogumo extends GameObject { //<>// //<>// //<>// //<>// //<>// //<
       fill (#020302);
       textSize (32);
       text ("player " + playerHealth, 621, 56);
-
+      
       text (potionAmmount, 100, 569);
+      
+      image(jorogumoImage,x,y,IWidth,IHeight);
+      x = 350 + 150 * cos(millis()/500.0f);
+      y = 200 + 200 * sin (millis()/1050.0f);
+      println(y);
     }
-    
-      if (enemyHealth < 1) {
-        fighting = false;
-        jorogumoAlive = false;
-        enemyHealth = 0;
-        obtainedSai = true;
-      }
 
-      if (playerHealth > 120) {
-        playerHealth = 120;
-      }
+    if (enemyHealth < 1) {
+      fighting = false;
+      jorogumoAlive = false;
+      enemyHealth = 0;
+      obtainedSai = true;
+    }
 
-      if (playerHealth < 1) {
-        playerHealth = 0;
-        punch2.amp(0);
-        punch.amp(0);
-        
-        fighting = false;
-        dead = true;
-        image (gameOver, 0, 0);
-      }
+    if (playerHealth > 120) {
+      playerHealth = 120;
+    }
 
-      time = millis()/2000;
+    if (playerHealth < 1) {
+      playerHealth = 0;
+      punch2.amp(0);
+      punch.amp(0);
 
-      if (time - attackInterval >= 1 && enemyHealth > 0){
-        println("reaching the player damage");
-        playerHealth -= enemyDamage;
-        punchSound = random (1);
-        
-        if (punchSound > 0.5 & playerHealth >0){
+      fighting = false;
+      dead = true;
+      image (gameOver, 0, 0);
+    }
+
+    time = millis()/2000;
+
+    if (time - attackInterval >= 1 && enemyHealth > 0) {
+      println("reaching the player damage");
+      playerHealth -= enemyDamage;
+      punchSound = random (1);
+
+      if (punchSound > 0.5 & playerHealth >0) {
         punch.play();
         punch.amp(0.5);
-        }
-        
-        if (punchSound < 0.5 & playerHealth >0){
+      }
+
+      if (punchSound < 0.5 & playerHealth >0) {
         punch2.play();
         punch2.amp(0.5);
-        }
-        
-        attackInterval++;
       }
-      
-      if (fighting == false){
-        punch.stop();
-      }
+
+      attackInterval++;
+    }
+
+    if (fighting == false) {
+      punch.stop();
+    }
   }
 
   void mouseClicked () {
-    if (mouseIsHovering & playerHealth > 0) {
+    if (mouseX > x && mouseX < x + IWidth && mouseY > y && mouseY < y + IHeight && playerHealth > 0) {
       enemyHealth -= weaponDamage;
       println("reaching the enemy damage");
     }
@@ -110,7 +123,7 @@ class combatJorogumo extends GameObject { //<>// //<>// //<>// //<>// //<>// //<
       playerHealth += healthPotion;
       potionAmmount -= 1;
     }
-            if (fighting == false & mouseX < 785 & mouseX > 654 & mouseY < 69 & mouseY > 9){
+    if (fighting == false & mouseX < 785 & mouseX > 654 & mouseY < 69 & mouseY > 9) {
       fighting = true;
       cutsceneJorogumo.stop();
     }
@@ -125,11 +138,11 @@ class combatJorogumo extends GameObject { //<>// //<>// //<>// //<>// //<>// //<
     super(identifier, x, y, owidth, oheight, gameObjectImageFile);
     this.gameObjectImage = loadImage(gameObjectImageFile);
   }
-  
-  public combatJorogumo(String identifier, int x, int y, int owidth, int oheight, String gameObjectImageFile, int health , int damage)
+
+  public combatJorogumo(String identifier, int x, int y, int owidth, int oheight, String gameObjectImageFile, int health, int damage)
   {
-    super(identifier,x,y,owidth,oheight,gameObjectImageFile);
-    
+    super(identifier, x, y, owidth, oheight, gameObjectImageFile);
+
     this.enemyHealth = health;
     this.enemyDamage = damage;
   }
