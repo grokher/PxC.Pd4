@@ -18,15 +18,20 @@ class combatDragon extends GameObject { //<>// //<>// //<>// //<>// //<>// //<>/
   float y = 50;
   float IWidth = 300;
   float IHeight = 200;
+  boolean dragonAlive = true;
 
   void draw () {
     println (punchSound);
 
-    if (fighting == false) {
+    if (fighting == false & dragonAlive == true) {
       playerHealth = 120;
 
       punch2.amp(0);
       punch.amp(0);
+
+       imageMode (CORNER);
+      image(cutsceneDragon, 0, 0);
+      cutsceneDragon.play(); 
 
       imageMode (CENTER);
       strokeWeight (3);
@@ -35,7 +40,7 @@ class combatDragon extends GameObject { //<>// //<>// //<>// //<>// //<>// //<>/
       rect (720, 40, 130, 60);
       image(playButton, 730, 30, 500, 500);
 
-      imageMode(CORNER);
+      imageMode (CORNER);
     }
 
     if (fighting == true) {
@@ -59,6 +64,7 @@ class combatDragon extends GameObject { //<>// //<>// //<>// //<>// //<>// //<>/
     if (enemyHealth < 1) {
       fighting = false;
       enemyHealth = 0;
+      dragonAlive = false;
       gameBeat = true;
       image(deadDragonImage, 50, 50, 200, 300);
     }
@@ -116,7 +122,7 @@ class combatDragon extends GameObject { //<>// //<>// //<>// //<>// //<>// //<>/
     }
     if (fighting == false & mouseX < 785 & mouseX > 654 & mouseY < 69 & mouseY > 9) {
       fighting = true;
-      cutsceneJorogumo.stop();
+      cutsceneDragon.stop();
     }
     if (fighting == false && mouseX < 500 && mouseX > 400 && mouseY > 500 && mouseY < 600)
     {

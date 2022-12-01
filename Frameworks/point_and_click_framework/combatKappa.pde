@@ -30,6 +30,10 @@ class combatKappa extends GameObject { //<>// //<>// //<>// //<>// //<>// //<>//
       punch2.amp(0);
       punch.amp(0);
 
+      imageMode (CORNER);
+      image(cutsceneKappa, 0, 0);
+      cutsceneKappa.play(); 
+
       imageMode (CENTER);
       strokeWeight (3);
       fill (#030202);
@@ -124,7 +128,7 @@ class combatKappa extends GameObject { //<>// //<>// //<>// //<>// //<>// //<>//
     }
     if (fighting == false & mouseX < 785 & mouseX > 654 & mouseY < 69 & mouseY > 9) {
       fighting = true;
-      cutsceneJorogumo.stop();
+      cutsceneKappa.stop();
     }
     if (fighting == false && mouseX < 450 && mouseX > 350 && mouseY > 500 && mouseY < 600)
     {
