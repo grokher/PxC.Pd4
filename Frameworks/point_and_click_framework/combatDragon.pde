@@ -1,4 +1,4 @@
-class combatDragon extends GameObject {
+class combatDragon extends GameObject { //<>//
   int playerHealth = 120;
   int enemyHealth = 250;
   int enemyDamage = 15;
@@ -66,7 +66,8 @@ class combatDragon extends GameObject {
       enemyHealth = 0;
       dragonAlive = false;
       gameBeat = true;
-      image(deadDragonImage, 50, 50, 200, 300);
+      image(finalCutscene, 0, 0);
+      finalCutscene.play(); 
     }
 
     if (playerHealth > 120) {
