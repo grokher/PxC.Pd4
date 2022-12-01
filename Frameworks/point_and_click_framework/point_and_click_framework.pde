@@ -3,7 +3,7 @@ import processing.sound.*;
 
 int wwidth = 800;
 int wheight = 600;
-PImage potion, playButton, inventoryButton, skipButton, gameOver, jorogumoImage, kitsuneImage, kappaImage, dragonImage, deadDragonImage, bowObtained, katanaObtained, saiObtained;
+PImage potion, playButton, inventoryButton, skipButton, gameOver, jorogumoImage, kitsuneImage, kappaImage, dragonImage, deadDragonImage, bowObtained, katanaObtained, saiObtained, kappaInventory;
 PImage backButton;
 
 //Combat_System combatSystem;
@@ -53,6 +53,7 @@ void setup()
   bowObtained = loadImage("obtainedBow.png");
   katanaObtained = loadImage("obtainedKatana.png");
   saiObtained = loadImage("obtainedSai.png");
+  kappaInventory = loadImage("weaponSelectionKappa.png");
 
   backButton = loadImage("arrowDownDark.png");
 
