@@ -8,7 +8,7 @@ PImage backButton;
 
 //Combat_System combatSystem;
 enemyMovement enemyMovement;
-Movie cutsceneKitsune, cutsceneJorogumo;
+Movie cutsceneKitsune, cutsceneJorogumo,cutsceneKappa, cutsceneDragon;
 
 final SceneManager sceneManager = new SceneManager();
 final InventoryManager inventoryManager = new InventoryManager();
@@ -58,6 +58,8 @@ void setup()
 
   cutsceneKitsune = new Movie(this, "kitsuneCutscene.mov");
   cutsceneJorogumo = new Movie(this, "jorogumoCutscene.mov");
+  cutsceneKappa = new Movie(this, "kappa.mov");
+  cutsceneDragon = new Movie(this, "boss.mov");
 
   button1 = new SoundFile(this, "button1.wav");
   button2 = new SoundFile(this, "button2.wav");
