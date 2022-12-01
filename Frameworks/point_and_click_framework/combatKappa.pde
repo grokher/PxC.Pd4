@@ -1,4 +1,4 @@
-class combatKappa extends GameObject {
+class combatKappa extends GameObject { //<>//
   int playerHealth = 120;
   int enemyHealth = 250;
   int enemyDamage = 15;
@@ -13,7 +13,7 @@ class combatKappa extends GameObject {
   int health;
   float punchSound = random (1);
   boolean kappaAlive = true;
-  boolean obtainedBow = true;
+  boolean obtainedBow = false;
   boolean dead = false;
   float x = 200;
   float y = 200;
