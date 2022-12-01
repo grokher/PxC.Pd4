@@ -1,4 +1,4 @@
-class combatDragon extends GameObject { //<>// //<>// //<>// //<>// //<>// //<>//
+class combatDragon extends GameObject {
   int playerHealth = 120;
   int enemyHealth = 250;
   int enemyDamage = 15;
@@ -21,7 +21,6 @@ class combatDragon extends GameObject { //<>// //<>// //<>// //<>// //<>// //<>/
   boolean dragonAlive = true;
 
   void draw () {
-    println (punchSound);
 
     if (fighting == false & dragonAlive == true) {
       playerHealth = 120;
@@ -56,6 +55,7 @@ class combatDragon extends GameObject { //<>// //<>// //<>// //<>// //<>// //<>/
       text ("player " + playerHealth, 621, 56);
 
       text (potionAmmount, 100, 569);
+      //dragon movement swooping in and out
       image(dragonImage, x, y, IWidth, IHeight);
       x = 350 + 150 * tan(millis()/500.0f);
       y = 200 + 200 * sin (millis()/1050.0f);
@@ -86,9 +86,9 @@ class combatDragon extends GameObject { //<>// //<>// //<>// //<>// //<>// //<>/
     }
 
     time = millis()/2000;
-
+    
+    //enemy attacks and sounds
     if (time - attackInterval >= 1 && enemyHealth > 0) {
-      println("reaching the player damage");
       playerHealth -= enemyDamage;
       punchSound = random (1);
 
@@ -113,7 +113,6 @@ class combatDragon extends GameObject { //<>// //<>// //<>// //<>// //<>// //<>/
   void mouseClicked () {
     if (mouseX > x && mouseX < x + IWidth && mouseY > y && mouseY < y + IHeight && playerHealth > 0) {
       enemyHealth -= weaponDamage;
-      println("reaching the enemy damage");
     }
 
     if (mouseX > 22 & mouseX < 136 & mouseY > 467 & mouseY < 581 & potionAmmount > 0 & playerHealth > 0) {

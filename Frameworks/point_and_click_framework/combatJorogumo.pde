@@ -1,4 +1,4 @@
-class combatJorogumo extends GameObject { //<>// //<>// //<>// //<>// //<>// //<>// //<>//
+class combatJorogumo extends GameObject {
   int playerHealth = 120;
   int enemyHealth = 250;
   int enemyDamage = 15;
@@ -25,7 +25,6 @@ class combatJorogumo extends GameObject { //<>// //<>// //<>// //<>// //<>// //<
   }
 
   void draw () {
-    println (punchSound);
 
     if (fighting == false & jorogumoAlive == true & dead == false) {
       playerHealth = 120;
@@ -63,7 +62,6 @@ class combatJorogumo extends GameObject { //<>// //<>// //<>// //<>// //<>// //<
       image(jorogumoImage, x, y, IWidth, IHeight);
       x = 350 + 150 * cos(millis()/500.0f);
       y = 200 + 200 * sin (millis()/1050.0f);
-      println(y);
     }
 
     if (enemyHealth < 1) {
@@ -96,7 +94,6 @@ class combatJorogumo extends GameObject { //<>// //<>// //<>// //<>// //<>// //<
     time = millis()/2000;
 
     if (time - attackInterval >= 1 && enemyHealth > 0) {
-      println("reaching the player damage");
       playerHealth -= enemyDamage;
       punchSound = random (1);
 
@@ -121,7 +118,6 @@ class combatJorogumo extends GameObject { //<>// //<>// //<>// //<>// //<>// //<
   void mouseClicked () {
     if (mouseX > x && mouseX < x + IWidth && mouseY > y && mouseY < y + IHeight && playerHealth > 0) {
       enemyHealth -= weaponDamage;
-      println("reaching the enemy damage");
     }
     if (mouseX > 22 & mouseX < 136 & mouseY > 467 & mouseY < 581 & potionAmmount > 0 & playerHealth > 0) {
       playerHealth += healthPotion;

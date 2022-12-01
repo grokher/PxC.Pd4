@@ -1,4 +1,4 @@
-class combatKitsune extends GameObject { //<>// //<>// //<>// //<>// //<>// //<>//
+class combatKitsune extends GameObject {
   int playerHealth = 120;
   int enemyHealth = 250;
   int enemyDamage = 15;
@@ -54,11 +54,11 @@ class combatKitsune extends GameObject { //<>// //<>// //<>// //<>// //<>// //<>
       text ("player " + playerHealth, 621, 56);
 
       text (potionAmmount, 100, 569);
-
-      image(kitsuneImage, x, y, IWidth, IHeight);
-      x = 350 + 200 * cos(millis()/200.0f);
+      
+      //kitsune Animation
+      animation1.display(x + animation1.getWidth()/2,y,IWidth,IHeight);
+      x = -50 + 200 * cos(millis()/200.0f);
       y = 200 + 200 * sin (millis()/650.0f);
-      println(y);
     }
 
     if (enemyHealth < 1) {
@@ -91,7 +91,6 @@ class combatKitsune extends GameObject { //<>// //<>// //<>// //<>// //<>// //<>
     time = millis()/2000;
 
     if (time - attackInterval >= 1 && enemyHealth > 0) {
-      println("reaching the player damage");
       playerHealth -= enemyDamage;
       punchSound = random (1);
 
@@ -117,7 +116,6 @@ class combatKitsune extends GameObject { //<>// //<>// //<>// //<>// //<>// //<>
   void mouseClicked () {
     if (mouseX > x && mouseX < x + IWidth && mouseY > y && mouseY < y + IHeight && playerHealth > 0) {
       enemyHealth -= weaponDamage;
-      println("reaching the enemy damage");
     }
     if (mouseX > 22 & mouseX < 136 & mouseY > 467 & mouseY < 581 & potionAmmount > 0 & playerHealth > 0) {
       playerHealth += healthPotion;

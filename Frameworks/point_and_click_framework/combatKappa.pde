@@ -1,4 +1,4 @@
-class combatKappa extends GameObject { //<>// //<>// //<>// //<>// //<>// //<>//
+class combatKappa extends GameObject {
   int playerHealth = 120;
   int enemyHealth = 250;
   int enemyDamage = 15;
@@ -22,7 +22,6 @@ class combatKappa extends GameObject { //<>// //<>// //<>// //<>// //<>// //<>//
 
 
   void draw () {
-    println (punchSound);
 
     if (fighting == false & kappaAlive == true) {
       playerHealth = 120;
@@ -94,7 +93,6 @@ class combatKappa extends GameObject { //<>// //<>// //<>// //<>// //<>// //<>//
     time = millis()/2000;
 
     if (time - attackInterval >= 1 && enemyHealth > 0) {
-      println("reaching the player damage");
       playerHealth -= enemyDamage;
       punchSound = random (1);
 
@@ -120,7 +118,6 @@ class combatKappa extends GameObject { //<>// //<>// //<>// //<>// //<>// //<>//
     if (mouseX > x && mouseX < x + IWidth && mouseY > y && mouseY < y + IHeight && playerHealth > 0) {
       enemyHealth -= weaponDamage;
       fighting = true;
-      println("reaching the enemy damage");
     }
     if (mouseX > 22 & mouseX < 136 & mouseY > 467 & mouseY < 581 & potionAmmount > 0 & playerHealth > 0) {
       playerHealth += healthPotion;
