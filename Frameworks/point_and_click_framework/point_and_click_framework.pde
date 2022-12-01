@@ -8,7 +8,6 @@ int wheight = 600;
 PImage potion, playButton, inventoryButton, skipButton, gameOver, jorogumoImage, kitsuneImage, kappaImage, dragonImage, deadDragonImage, bowObtained, katanaObtained, saiObtained, kappaInventory;
 PImage backButton;
 
-//Combat_System combatSystem;
 enemyMovement enemyMovement;
 Movie cutsceneKitsune, cutsceneJorogumo,cutsceneKappa, cutsceneDragon;
 
@@ -75,8 +74,6 @@ void setup()
   //start of mainMen
   Scene mainMenu = new Scene("sceneMainMenu", "player.jpg");
   GameObject weaponTanto = new GameObject("weapon_scene0x", 430, 110, 300, 500, "katana.png");
-  /*MoveToSceneObject startButton = new MoveToSceneObject("startText_mainMenu",450,100,50,50,"playButton.png","");
-   mainMenu.addGameObject(startButton);*/
   MoveToSceneObject scene01MoveTo = new MoveToSceneObject("goToScene01_sceneMainMenu", -300, -170, 900, 700, "playButton.png", "scene01");
   mainMenu.addGameObject(scene01MoveTo);
 
@@ -150,10 +147,9 @@ void setup()
   sceneCombatJorogumo.addGameObject(hitboxJorogumo);
 
   //combat scene with dragon
-  Scene sceneCombatDragon = new Scene("combatDragon", "backDragon.jpg"); // need finished? background
+  Scene sceneCombatDragon = new Scene("combatDragon", "backDragon.jpg");
   combatDragon hitboxDragon = new combatDragon("hitbox_dragon", 800, 800, 550, 500, "dragon.png", dragonHealth, dragonDamage);
   sceneCombatDragon.addGameObject(hitboxDragon);
-  //add Dragon combatSystem
 
   //do sceneManager.addScene(scene0X); to add a new scene to what we already have
   sceneManager.addScene(mainMenu);
