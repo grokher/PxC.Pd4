@@ -56,6 +56,7 @@ class combatKitsune extends GameObject {
       text (potionAmmount, 100, 569);
       
       //kitsune Animation
+      image(kitsuneImage,x,y,IWidth,IHeight);
       animation1.display(x + animation1.getWidth()/2,y,IWidth,IHeight);
       x = -50 + 200 * cos(millis()/200.0f);
       y = 200 + 200 * sin (millis()/650.0f);

@@ -5,11 +5,12 @@ Animation animation1, animation2;
 
 int wwidth = 800;
 int wheight = 600;
-PImage potion, playButton, inventoryButton, skipButton, gameOver, jorogumoImage, kitsuneImage, kappaImage, dragonImage, deadDragonImage, bowObtained, katanaObtained, saiObtained, inventory;
+PImage potion, playButton, inventoryButton, skipButton, gameOver, jorogumoImage, kitsuneImage, kappaImage, dragonImage, deadDragonImage, bowObtained, katanaObtained, saiObtained, inventoryImage;
 PImage backButton;
 
 enemyMovement enemyMovement;
-Movie cutsceneKitsune, cutsceneJorogumo,cutsceneKappa, cutsceneDragon;
+Movie cutsceneKitsune, cutsceneJorogumo, cutsceneKappa, cutsceneDragon;
+inventory Inventory;
 
 final SceneManager sceneManager = new SceneManager();
 final InventoryManager inventoryManager = new InventoryManager();
@@ -18,6 +19,7 @@ SoundFile button1, button2, slash, punch, punch2;
 int x;
 int y;
 
+boolean inventoryOpen = false;
 boolean kappa, jorogumo, dragon, kitsune;
 int kappaHealth = 200;
 int kappaDamage = 10;
@@ -38,9 +40,7 @@ void setup()
   frameRate(60);
   x = 350;
   y = 250;
-
-  enemyMovement = new enemyMovement();
-  enemyMovement.kappa = loadImage("kappa.png");
+  
   potion = loadImage("potion.png");
   playButton = loadImage("playButton.png");
   inventoryButton = loadImage ("inventoryButton.png");
@@ -54,10 +54,10 @@ void setup()
   bowObtained = loadImage("obtainedBow.png");
   katanaObtained = loadImage("obtainedKatana.png");
   saiObtained = loadImage("obtainedSai.png");
-  inventory = loadImage("weaponSelect.png");
+  inventoryImage = loadImage("weaponSelect.png");
 
   backButton = loadImage("arrowDownDark.png");
-  
+
   animation1 = new Animation("kitsune", 4);
 
   cutsceneKitsune = new Movie(this, "kitsuneCutscene.mov");
@@ -71,24 +71,31 @@ void setup()
   punch = new SoundFile(this, "hit.wav");
   punch2 = new SoundFile(this, "hit2.wav");
 
-  //start of mainMen
+  //start of mainMene
   Scene mainMenu = new Scene("sceneMainMenu", "player.jpg");
   GameObject weaponTanto = new GameObject("weapon_scene0x", 430, 110, 300, 500, "katana.png");
   MoveToSceneObject scene01MoveTo = new MoveToSceneObject("goToScene01_sceneMainMenu", -300, -170, 900, 700, "playButton.png", "scene01");
   mainMenu.addGameObject(scene01MoveTo);
-
+  
+  Scene InventoryScene = new Scene("InventoryScene","weaponSelect.png");
+  inventory mainInventory = new inventory("InventoryName",0,0,0,0);
+  InventoryScene.addGameObject(mainInventory);
 
   //start of scene1 Main game screen
 
   Scene scene01 = new Scene("scene01", "map.jpg");
-  MoveToSceneObject kitsuneSceneMoveTo = new MoveToSceneObject("goToScene03_scene01", 75, 0, 300, 300, "clickableObject.png", "scene03");//topleft kitusune
+  MoveToSceneObject kitsuneSceneMoveTo = new MoveToSceneObject("goToScene03_scene01", 75, 100, 300, 200, "clickableObject.png", "scene03");//topleft kitusune
   scene01.addGameObject(kitsuneSceneMoveTo);
-  MoveToSceneObject jorogumoSceneMoveto = new MoveToSceneObject("goToScene04_scene01", 75, 300, 300, 300, "clickableObject.png", "scene04"); //bottomleft jorogumo
+  MoveToSceneObject jorogumoSceneMoveto = new MoveToSceneObject("goToScene04_scene01", 75, 300, 300, 200, "clickableObject.png", "scene04"); //bottomleft jorogumo
   scene01.addGameObject(jorogumoSceneMoveto);
-  MoveToSceneObject lakeSceneMoveTo = new MoveToSceneObject("goToScene05_scene01", 375, 0, 300, 300, "clickableObject.png", "scene02"); //topright kappa
+  MoveToSceneObject lakeSceneMoveTo = new MoveToSceneObject("goToScene05_scene01", 375, 100, 300, 200, "clickableObject.png", "scene02"); //topright kappa
   scene01.addGameObject(lakeSceneMoveTo);
-  MoveToSceneObject bossSceneMoveTo = new MoveToSceneObject("goToScene06_scene01", 375, 300, 300, 300, "clickableObject.png", "scene06"); //bottomright dragon
+  MoveToSceneObject bossSceneMoveTo = new MoveToSceneObject("goToScene06_scene01", 375, 300, 300, 200, "clickableObject.png", "scene06"); //bottomright dragon
   scene01.addGameObject(bossSceneMoveTo);
+  GameObject inventoryButton = new GameObject("InventoryButton", 50, 0, 700, 500, "inventoryButton.png");
+  scene01.addGameObject(inventoryButton);
+  MoveToSceneObject InventorySelect = new MoveToSceneObject("goToSceneInventoryScene_scene01",100,0,700,100,"clickableObject.png", "InventoryScene");
+  scene01.addGameObject(InventorySelect);
 
   //start of scene02 game screen
 
@@ -153,6 +160,7 @@ void setup()
 
   //do sceneManager.addScene(scene0X); to add a new scene to what we already have
   sceneManager.addScene(mainMenu);
+  sceneManager.addScene(InventoryScene);
   sceneManager.addScene(scene01);
   sceneManager.addScene(scene02);
   sceneManager.addScene(scene03);
@@ -162,6 +170,7 @@ void setup()
   sceneManager.addScene(sceneCombatKappa);
   sceneManager.addScene(sceneCombatKitsune);
   sceneManager.addScene(sceneCombatDragon);
+  
 }
 
 void draw()
@@ -169,10 +178,6 @@ void draw()
   sceneManager.getCurrentScene().draw(wwidth, wheight);
   sceneManager.getCurrentScene().updateScene();
   inventoryManager.clearMarkedForDeathCollectables();
-  if (enemyMovement.isKappa == true)
-  {
-    isInCombat();
-  }
 }
 
 void mouseMoved() {
@@ -181,12 +186,8 @@ void mouseMoved() {
 
 void mouseClicked() {
   sceneManager.getCurrentScene().mouseClicked();
+  
 }
 void movieEvent(Movie m) {
   m.read();
-}
-void isInCombat()
-{
-  enemyMovement.isKappa = true;
-  enemyMovement.kappaX = x;
 }

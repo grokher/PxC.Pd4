@@ -15,12 +15,10 @@ class inventory extends GameObject {
     if (inventoryOpen == false);
     image (inventoryButton, 0, 0);
 
-    if (inventoryOpen == false & mouseX > 133 & mouseX < 666 & mouseY > 0 & mouseY < 69 & mousePressed == true) {
-      inventoryOpen = true;
-    }
+    
 
     if (inventoryOpen == true) {
-      image(inventory, 0, 0);
+      image(inventoryImage, 0, 0);
 
       if (inventoryOpen == true & mouseX < 352 & mouseX > 106 & mouseY < 299 & mouseY > 157 & mousePressed == true) {
         combatKitsune.weaponDamage = tantoDamage;
