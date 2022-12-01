@@ -18,14 +18,14 @@ int x;
 int y;
 
 boolean kappa, jorogumo, dragon, kitsune;
-int kappaHealth = 1;
+int kappaHealth = 200;
 int kappaDamage = 10;
-int jorogumoHealth = 1;
+int jorogumoHealth = 250;
 int jorogumoDamage = 15;
-int kitsuneHealth = 1;
-int kitsuneDamage = 10;
-int dragonHealth = 1;
-int dragonDamage = 25;
+int kitsuneHealth = 200;
+int kitsuneDamage = 8;
+int dragonHealth = 500;
+int dragonDamage = 20;
 
 void settings()
 {
