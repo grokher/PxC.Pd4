@@ -2,7 +2,7 @@ class combatJorogumo extends GameObject { //<>//
   int playerHealth = 120;
   int enemyHealth = 250;
   int enemyDamage = 15;
-  int weaponDamage = 5;
+  int weaponDamage = 12;
   int potionAmmount = 3;
   int attackInterval = 1;
   int time;
