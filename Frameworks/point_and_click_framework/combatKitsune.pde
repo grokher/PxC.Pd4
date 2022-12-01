@@ -2,7 +2,7 @@ class combatKitsune extends GameObject { //<>//
   int playerHealth = 120;
   int enemyHealth = 250;
   int enemyDamage = 15;
-  int weaponDamage = 5;
+  int weaponDamage = 9;
   int potionAmmount = 3;
   int attackInterval = 1;
   int time;
@@ -56,10 +56,10 @@ class combatKitsune extends GameObject { //<>//
       text (potionAmmount, 100, 569);
       
       //kitsune Animation
-      tint(255,0);
-      image(kitsuneImage,x,y,IWidth,IHeight);
-      tint(255,255);
-      animation1.display(x - 400 + animation1.getWidth()/2,y,IWidth,IHeight);
+      tint(255, 0);
+      image(kitsuneImage, x, y, IWidth, IHeight);
+      tint(255, 255);
+      animation1.display(x - 400 + animation1.getWidth()/2, y, IWidth, IHeight);
       x = 250 + 200 * cos(millis()/200.0f);
       y = 200 + 200 * sin (millis()/650.0f);
       

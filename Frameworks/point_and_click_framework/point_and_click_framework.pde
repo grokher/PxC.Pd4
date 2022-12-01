@@ -21,13 +21,13 @@ int y;
 
 boolean inventoryOpen = false;
 boolean kappa, jorogumo, dragon, kitsune;
-int kappaHealth = 200;
+int kappaHealth = 250;
 int kappaDamage = 10;
-int jorogumoHealth = 250;
+int jorogumoHealth = 420;
 int jorogumoDamage = 15;
-int kitsuneHealth = 200;
+int kitsuneHealth = 270;
 int kitsuneDamage = 8;
-int dragonHealth = 500;
+int dragonHealth = 550;
 int dragonDamage = 20;
 
 void settings()
@@ -78,10 +78,6 @@ void setup()
   GameObject weaponTanto = new GameObject("weapon_scene0x", 430, 110, 300, 500, "katana.png");
   MoveToSceneObject scene01MoveTo = new MoveToSceneObject("goToScene01_sceneMainMenu", -300, -170, 900, 700, "playButton.png", "scene01");
   mainMenu.addGameObject(scene01MoveTo);
-  
-  Scene InventoryScene = new Scene("InventoryScene","weaponSelect.png");
-  inventory mainInventory = new inventory("InventoryName",800,800,800,600);
-  InventoryScene.addGameObject(mainInventory);
 
   //start of scene1 Main game screen
 
@@ -162,7 +158,6 @@ void setup()
 
   //do sceneManager.addScene(scene0X); to add a new scene to what we already have
   sceneManager.addScene(mainMenu);
-  sceneManager.addScene(InventoryScene);
   sceneManager.addScene(scene01);
   sceneManager.addScene(scene02);
   sceneManager.addScene(scene03);
