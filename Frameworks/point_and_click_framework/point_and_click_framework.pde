@@ -14,7 +14,7 @@ inventory Inventory;
 
 final SceneManager sceneManager = new SceneManager();
 final InventoryManager inventoryManager = new InventoryManager();
-SoundFile button1, button2, slash, punch, punch2;
+SoundFile button1, button2, slash, punch, punch2, ambience;
 
 int x;
 int y;
@@ -72,6 +72,10 @@ void setup()
   slash = new SoundFile(this, "sai.wav");
   punch = new SoundFile(this, "hit.wav");
   punch2 = new SoundFile(this, "hit2.wav");
+  ambience = new SoundFile(this, "ambience.wav");
+  ambience.loop();
+  ambience.play();
+  ambience.amp(1);
 
   //start of mainMene
   Scene mainMenu = new Scene("sceneMainMenu", "player.jpg");
