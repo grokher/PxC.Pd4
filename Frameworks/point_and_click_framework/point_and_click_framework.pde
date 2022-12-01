@@ -9,7 +9,7 @@ PImage potion, playButton, inventoryButton, skipButton, gameOver, jorogumoImage,
 PImage backButton;
 
 enemyMovement enemyMovement;
-Movie cutsceneKitsune, cutsceneJorogumo, cutsceneKappa, cutsceneDragon;
+Movie cutsceneKitsune, cutsceneJorogumo, cutsceneKappa, cutsceneDragon, finalCutscene;
 inventory Inventory;
 
 final SceneManager sceneManager = new SceneManager();
@@ -27,7 +27,7 @@ int jorogumoHealth = 250;
 int jorogumoDamage = 15;
 int kitsuneHealth = 200;
 int kitsuneDamage = 8;
-int dragonHealth = 500;
+int dragonHealth = 1;
 int dragonDamage = 20;
 
 void settings()
@@ -64,6 +64,7 @@ void setup()
   cutsceneJorogumo = new Movie(this, "jorogumoCutscene.mov");
   cutsceneKappa = new Movie(this, "kappa.mov");
   cutsceneDragon = new Movie(this, "boss.mov");
+  finalCutscene = new Movie(this, "lastscreen.mov");
 
   button1 = new SoundFile(this, "button1.wav");
   button2 = new SoundFile(this, "button2.wav");
