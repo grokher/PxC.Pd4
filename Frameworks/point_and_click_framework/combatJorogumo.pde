@@ -1,4 +1,4 @@
-class combatJorogumo extends GameObject {
+class combatJorogumo extends GameObject { //<>//
   int playerHealth = 120;
   int enemyHealth = 250;
   int enemyDamage = 15;
@@ -19,10 +19,6 @@ class combatJorogumo extends GameObject {
   float y = 200;
   float IWidth = 300;
   float IHeight = 200;
-
-  void setup()
-  {
-  }
 
   void draw () {
 
@@ -70,8 +66,8 @@ class combatJorogumo extends GameObject {
       enemyHealth = 0;
       obtainedSai = true;
 
-      imageMode (CENTER);
-      image(saiObtained, 400, 300);
+      imageMode (CORNER);
+      image(stronger, 0, 0);
       imageMode (CORNER);
       image(backButton, width / 2 - 50, 500, 100, 100);
     }

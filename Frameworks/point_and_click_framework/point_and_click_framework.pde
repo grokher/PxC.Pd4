@@ -5,7 +5,7 @@ Animation animation1, animation2;
 
 int wwidth = 800;
 int wheight = 600;
-PImage potion, playButton, inventoryButton, skipButton, gameOver, jorogumoImage, kitsuneImage, kappaImage, dragonImage, deadDragonImage, bowObtained, katanaObtained, saiObtained, inventoryImage;
+PImage potion, playButton, inventoryButton, skipButton, gameOver, jorogumoImage, kitsuneImage, kappaImage, dragonImage, deadDragonImage, bowObtained, katanaObtained, saiObtained, inventoryImage, stronger;
 PImage backButton;
 
 enemyMovement enemyMovement;
@@ -55,6 +55,7 @@ void setup()
   katanaObtained = loadImage("obtainedKatana.png");
   saiObtained = loadImage("obtainedSai.png");
   inventoryImage = loadImage("weaponSelect.png");
+  stronger = loadImage("stronger.png");
 
   backButton = loadImage("arrowDownDark.png");
 

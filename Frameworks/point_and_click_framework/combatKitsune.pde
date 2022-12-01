@@ -1,4 +1,4 @@
-class combatKitsune extends GameObject {
+class combatKitsune extends GameObject { //<>//
   int playerHealth = 120;
   int enemyHealth = 250;
   int enemyDamage = 15;
@@ -71,8 +71,8 @@ class combatKitsune extends GameObject {
       kitsuneAlive = false;
       obtainedKatana = true;
       
-      imageMode (CENTER);
-      image(katanaObtained, 400, 300);
+      imageMode (CORNER);
+      image(stronger, 0, 0);
       imageMode (CORNER);
       image(backButton, width / 2 - 50, 500, 100, 100);
     }

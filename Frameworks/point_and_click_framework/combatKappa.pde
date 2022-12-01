@@ -68,8 +68,8 @@ class combatKappa extends GameObject { //<>//
       kappaAlive = false;
       obtainedBow = true;
 
-      imageMode (CENTER);
-      image(bowObtained, 400, 300);
+      imageMode (CORNER);
+      image(stronger, 0, 0);
       imageMode (CORNER);
       image(backButton, width / 2 - 50, 500, 100, 100);
     }
