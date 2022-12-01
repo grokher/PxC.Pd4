@@ -78,7 +78,7 @@ void setup()
   mainMenu.addGameObject(scene01MoveTo);
   
   Scene InventoryScene = new Scene("InventoryScene","weaponSelect.png");
-  inventory mainInventory = new inventory("InventoryName",0,0,0,0);
+  inventory mainInventory = new inventory("InventoryName",800,800,800,600);
   InventoryScene.addGameObject(mainInventory);
 
   //start of scene1 Main game screen
