@@ -69,7 +69,7 @@ void setup()
 
   button1 = new SoundFile(this, "button1.wav");
   button2 = new SoundFile(this, "button2.wav");
-  slash = new SoundFile(this, "swordSlash.wav");
+  slash = new SoundFile(this, "sai.wav");
   punch = new SoundFile(this, "hit.wav");
   punch2 = new SoundFile(this, "hit2.wav");
 

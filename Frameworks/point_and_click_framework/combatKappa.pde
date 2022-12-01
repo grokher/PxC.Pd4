@@ -117,7 +117,7 @@ class combatKappa extends GameObject { //<>//
   void mouseClicked () {
     if (mouseX > x && mouseX < x + IWidth && mouseY > y && mouseY < y + IHeight && playerHealth > 0) {
       enemyHealth -= weaponDamage;
-      fighting = true;
+      slash.play();
     }
     if (mouseX > 22 & mouseX < 136 & mouseY > 467 & mouseY < 581 & potionAmmount > 0 & playerHealth > 0) {
       playerHealth += healthPotion;
