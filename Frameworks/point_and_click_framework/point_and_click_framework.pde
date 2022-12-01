@@ -27,7 +27,7 @@ int jorogumoHealth = 250;
 int jorogumoDamage = 15;
 int kitsuneHealth = 200;
 int kitsuneDamage = 8;
-int dragonHealth = 1;
+int dragonHealth = 500;
 int dragonDamage = 20;
 
 void settings()
