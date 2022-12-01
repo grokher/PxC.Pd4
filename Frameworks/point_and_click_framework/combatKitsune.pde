@@ -54,11 +54,11 @@ class combatKitsune extends GameObject { //<>// //<>// //<>// //<>// //<>// //<>
       text ("player " + playerHealth, 621, 56);
 
       text (potionAmmount, 100, 569);
-
-      image(kitsuneImage, x, y, IWidth, IHeight);
-      x = 350 + 200 * cos(millis()/200.0f);
+      
+      animation1.display(x + animation1.getWidth()/2,y,IWidth,IHeight);
+      //image(kitsuneImage, x, y, IWidth, IHeight);
+      x = -50 + 200 * cos(millis()/200.0f);
       y = 200 + 200 * sin (millis()/650.0f);
-      println(y);
     }
 
     if (enemyHealth < 1) {

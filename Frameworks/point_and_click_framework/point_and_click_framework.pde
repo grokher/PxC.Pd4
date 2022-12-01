@@ -1,6 +1,8 @@
 import processing.video.*;
 import processing.sound.*;
 
+Animation animation1, animation2;
+
 int wwidth = 800;
 int wheight = 600;
 PImage potion, playButton, inventoryButton, skipButton, gameOver, jorogumoImage, kitsuneImage, kappaImage, dragonImage, deadDragonImage, bowObtained, katanaObtained, saiObtained, kappaInventory;
@@ -46,7 +48,7 @@ void setup()
   skipButton = loadImage ("skipButton.png");
   gameOver = loadImage ("gameOver.png");
   jorogumoImage = loadImage("jorogumo.png");
-  kitsuneImage = loadImage("kitsune.png");
+  kitsuneImage = loadImage("kitsune0.png");
   kappaImage = loadImage("kappa.png");
   dragonImage = loadImage("dragon.png");
   deadDragonImage = loadImage("deadDragon.png");
@@ -56,6 +58,8 @@ void setup()
   kappaInventory = loadImage("weaponSelectionKappa.png");
 
   backButton = loadImage("arrowDownDark.png");
+  
+  animation1 = new Animation("kitsune", 4);
 
   cutsceneKitsune = new Movie(this, "kitsuneCutscene.mov");
   cutsceneJorogumo = new Movie(this, "jorogumoCutscene.mov");
@@ -103,7 +107,7 @@ void setup()
   //start of scene03 game screen (Kitsune)  
 
   Scene scene03 = new Scene("scene03", "backKitsune01.jpg");
-  GameObject enemyKitsune = new GameObject("enemy_Kitsune01", 150, 150, 200, 200, "kitsune.png");
+  GameObject enemyKitsune = new GameObject("enemy_Kitsune01", 150, 150, 200, 200, "kitsune0.png");
   scene03.addGameObject(enemyKitsune);
   MoveToSceneObject combatSceneKitsune = new MoveToSceneObject("goToCombatSceneKitsune", 150, 150, 200, 200, "clickableObject.png", "combatKitsune");
   scene03.addGameObject(combatSceneKitsune);
@@ -136,7 +140,7 @@ void setup()
   sceneCombatKappa.addGameObject(kappa);
 
   //combat scene with kitsune
-  combatKitsune hitboxKitsune = new combatKitsune("hitboxKitsune", 2000, 2000, 200, 200, "kitsune.png", kitsuneHealth, kitsuneDamage);
+  combatKitsune hitboxKitsune = new combatKitsune("hitboxKitsune", 2000, 2000, 200, 200, "kitsune0.png", kitsuneHealth, kitsuneDamage);
   Scene sceneCombatKitsune = new Scene("combatKitsune", "backKitsune01.jpg");
   sceneCombatKitsune.addGameObject(hitboxKitsune);
 
