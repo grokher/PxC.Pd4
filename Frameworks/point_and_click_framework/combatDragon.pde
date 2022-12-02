@@ -55,8 +55,12 @@ class combatDragon extends GameObject { //<>//
       text ("player " + playerHealth, 621, 56);
 
       text (potionAmmount, 100, 569);
+      
       //dragon movement swooping in and out
+      tint(255,0);
       image(dragonImage, x, y, IWidth, IHeight);
+      tint(255,255);
+      animation3.display(x - 400 + animation3.getWidth()/2, y, IWidth, IHeight);
       x = 350 + 150 * tan(millis()/500.0f);
       y = 200 + 200 * sin (millis()/1050.0f);
     }

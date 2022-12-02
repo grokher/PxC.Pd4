@@ -1,7 +1,7 @@
 import processing.video.*;
 import processing.sound.*;
 
-Animation animation1, animation2;
+Animation animation1, animation2, animation3;
 
 int wwidth = 800;
 int wheight = 600;
@@ -48,8 +48,8 @@ void setup()
   gameOver = loadImage ("gameOver.png");
   jorogumoImage = loadImage("jorogumo.png");
   kitsuneImage = loadImage("kitsune0.png");
-  kappaImage = loadImage("kappa.png");
-  dragonImage = loadImage("dragon.png");
+  kappaImage = loadImage("kappa0.png");
+  dragonImage = loadImage("dragon0.png");
   deadDragonImage = loadImage("deadDragon.png");
   bowObtained = loadImage("obtainedBow.png");
   katanaObtained = loadImage("obtainedKatana.png");
@@ -59,7 +59,9 @@ void setup()
 
   backButton = loadImage("arrowDownDark.png");
 
-  animation1 = new Animation("kitsune", 4);
+  animation1 = new Animation("kitsune", 5);
+  animation2 = new Animation("kappa", 6);
+  animation3 = new Animation("dragon", 15);
 
   cutsceneKitsune = new Movie(this, "kitsuneCutscene.mov");
   cutsceneJorogumo = new Movie(this, "jorogumoCutscene.mov");
@@ -104,7 +106,7 @@ void setup()
   Scene scene02 = new Scene("scene02", "backKappa.jpg");
   MoveToSceneObject returnObject1 = new MoveToSceneObject("goBack_scene02", 700, 500, 100, 100, "map.jpg", true);
   scene02.addGameObject(returnObject1);
-  GameObject enemyKappa = new GameObject("enemy_Kappa01", 150, 150, 300, 300, "kappa.png");
+  GameObject enemyKappa = new GameObject("enemy_Kappa01", 150, 150, 300, 300, "kappa0.png");
   scene02.addGameObject(enemyKappa);
   MoveToSceneObject combatSceneKappa = new MoveToSceneObject("goToCombatSceneKappa", 150, 150, 300, 300, "clickableObject.png", "combatKappa");
   scene02.addGameObject(combatSceneKappa);
@@ -132,7 +134,7 @@ void setup()
 
   //start of scene05 game screen (boss)
   Scene scene05 = new Scene("scene06", "backDragon.jpg");
-  GameObject enemyDragon = new GameObject("enemy_Dragon01", 75, 0, 550, 450, "dragon.png");
+  GameObject enemyDragon = new GameObject("enemy_Dragon01", 75, 0, 550, 450, "dragon0.png");
   scene05.addGameObject(enemyDragon);
   MoveToSceneObject combatSceneDragon = new MoveToSceneObject("goToCombatSceneDragon", 200, 0, 400, 450, "clickableObject.png", "combatDragon");
   scene05.addGameObject(combatSceneDragon);
@@ -142,7 +144,7 @@ void setup()
 
   //combat scene with kappa
   Scene sceneCombatKappa = new Scene("combatKappa", "backKappa.jpg");
-  combatKappa kappa = new combatKappa("hitbox_Kappa", 800, 800, 0, 0, "kappa.png", kappaHealth, kappaDamage);
+  combatKappa kappa = new combatKappa("hitbox_Kappa", 800, 800, 0, 0, "kappa0.png", kappaHealth, kappaDamage);
   sceneCombatKappa.addGameObject(kappa);
 
   //combat scene with kitsune
@@ -157,7 +159,7 @@ void setup()
 
   //combat scene with dragon
   Scene sceneCombatDragon = new Scene("combatDragon", "backDragon.jpg");
-  combatDragon hitboxDragon = new combatDragon("hitbox_dragon", 800, 800, 550, 500, "dragon.png", dragonHealth, dragonDamage);
+  combatDragon hitboxDragon = new combatDragon("hitbox_dragon", 800, 800, 550, 500, "dragon0.png", dragonHealth, dragonDamage);
   sceneCombatDragon.addGameObject(hitboxDragon);
 
   //do sceneManager.addScene(scene0X); to add a new scene to what we already have
